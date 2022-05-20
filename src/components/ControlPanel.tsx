@@ -1,10 +1,10 @@
 import * as React from "react";
 import styles from './Game.module.css';
 import { useAppDispatch } from "../app/hooks";
-import { GameAction, SIZE_VARIANT, TSize } from "../types";
+import { GameAction, SIZE_VARIANT, SizeBoard } from "../types";
 
 export const ControlPanel: React.FC = () => {
-    const [sizeBoard, setSizeBoard] = React.useState<TSize>(5);
+    const [sizeBoard, setSizeBoard] = React.useState<SizeBoard>(5);
     const dispatch = useAppDispatch();
   
     const onStartNewGame = React.useCallback(
@@ -19,7 +19,7 @@ export const ControlPanel: React.FC = () => {
     );
   
     const onSizeChange = React.useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
-      setSizeBoard(+event.target.value as TSize);
+      setSizeBoard(+event.target.value as SizeBoard);
     }, []);
 
     return (

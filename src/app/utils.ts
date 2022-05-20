@@ -1,55 +1,80 @@
-import { BLOCK_VARIANT, IBlock, TBlockVariant, TBoard, TSize } from "../types";
- 
+import { IBlock, BlockVariant, Board, SizeBoard, BlockWithProbability } from "../types";
 
-export const getRandomBlock = () => {
-  const range: TBlockVariant[] =  [...Array(3).fill(BLOCK_VARIANT[0]), ...Array(2).fill(BLOCK_VARIANT[1]), BLOCK_VARIANT[2]];
-  const block = range[Math.floor(Math.random() * range.length)];
-
-  return block;
+const binarySearch = (arr: number[], x: number, start: number, end: number): number => {  
+  if (start > end) return (arr[start] >= x) ? start : -1;
+  
+  let mid = Math.floor((start + end) / 2);
+  if (arr[mid] >= x)
+    return binarySearch(arr, x, start, mid - 1);
+  else
+    return binarySearch(arr, x, mid + 1, end);
 }
 
-export const getNewRandomBlocks = () => {
-  const newBlocks: TBlockVariant[] = [];
+export const getRandomBlock = (blocks: BlockWithProbability): BlockVariant => {
+  const blockVariant = blocks.map(a => a.value);  
+  const probability = blocks.map(a => a.probability);  
+  const n = blocks.length;
+  
+  const prefix = [probability[0]];
+
+  for (let i = 1; i < n; i++) {
+    prefix[i] = prefix[i - 1] + probability[i];
+  }
+
+  let random = Math.floor((Math.random()* prefix[n - 1])) + 1;
+  let index = binarySearch(prefix, random, 0, n - 1);
+
+  return blockVariant[index];
+}
+
+export const getNewRandomBlocks = (blocks: BlockWithProbability): BlockVariant[] => { 
+  const newBlocks: BlockVariant[] = [];
+  
   for (let i = 0; i < 3; i++) {
-    newBlocks.push(getRandomBlock());
+    newBlocks.push(getRandomBlock(blocks));
   }
 
   return newBlocks;
 }
 
-export const getNewBoard = (size: TSize) => {
-  const range: Array<TBlockVariant | 0> = [...Array(size * 2).fill(0), ...BLOCK_VARIANT.slice(0, 3)];
-  const board: TBoard = {};
+export const getNewBoard = (blocks: BlockWithProbability, size: SizeBoard): Board => {
+  const board: Board = {};
+  let limit = 8;
 
   for (let i = 0; i < size; i++) {
     for (let j = 0; j < size; j++) {
-      const key = j.toString() + i.toString();
-      const randomValue = range[Math.floor(Math.random() * range.length)];
-      board[key] = randomValue;
+      const randomValue = (!!limit) ? getRandomBlock(blocks) : 0;
+      if (!!randomValue) limit--;
+
+      board[j.toString() + i] = (
+           board[(j + 1).toString() + i]
+        || board[(j - 1).toString() + i]
+        || board[j + (i + 1).toString()]
+        || board[j + (i - 1).toString()] === randomValue) ? 0 : randomValue;
     }
   }
 
   return board;
 }
 
-export const getNeighbors = (board: TBoard, x: number, y: number, value: TBlockVariant): number[][] => {
+export const getNeighbors = (board: Board, x: number, y: number, value: BlockVariant): number[][] => {
   const neighbors: number[][] = [];
   
-  if (board[(x + 1).toString() + y.toString()] === value) neighbors.push([x + 1, y]); 
-  if (board[(x - 1).toString() + y.toString()] === value) neighbors.push([x - 1, y]); 
-  if (board[x.toString() + (y + 1).toString()] === value) neighbors.push([x, y + 1]); 
-  if (board[x.toString() + (y - 1).toString()] === value) neighbors.push([x, y - 1]); 
+  if (board[(x + 1).toString() + y] === value) neighbors.push([x + 1, y]); 
+  if (board[(x - 1).toString() + y] === value) neighbors.push([x - 1, y]); 
+  if (board[x + (y + 1).toString()] === value) neighbors.push([x, y + 1]); 
+  if (board[x + (y - 1).toString()] === value) neighbors.push([x, y - 1]); 
   
   const clearNeighbors = neighbors.filter((neighbor) => !!neighbor.length);
 
   return clearNeighbors;
 }
 
-export const recalculateBoard = (board: TBoard, block: IBlock): 
+export const recalculateBoard = (board: Board, block: IBlock): 
   {
-    board: TBoard,
+    board: Board,
     isChanged: boolean,
-    value: TBlockVariant
+    value: BlockVariant
   } => {
 
   const newBoard = {...board};
@@ -67,7 +92,7 @@ export const recalculateBoard = (board: TBoard, block: IBlock):
 
   if (neighbors.length > 1) {
     isChanged = true;
-    newValue = newValue * 2 as TBlockVariant;
+    newValue = newValue * 2 as BlockVariant;
 
     neighbors.map(neighbor => newBoard[neighbor[0].toString() + neighbor[1].toString()] = 0);
     newBoard[x.toString() + y.toString()] = newValue;

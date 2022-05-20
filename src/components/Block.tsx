@@ -21,7 +21,7 @@ export const Block: React.FC<IBlock> = ({x, y, value}) => {
     );
 
     return (
-        <div className={styles.block} data-id={x+y} onClick={onSetNewBlock}>
+        <div className={styles.block} data-id={x.toString() + y} onClick={onSetNewBlock}>
             {/* [{x}, {y}]: {value} */}
             {!!value ? value : null}
         </div>

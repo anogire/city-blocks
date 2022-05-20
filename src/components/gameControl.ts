@@ -1,6 +1,6 @@
 import { RootState } from '../app/store';
 import { getNewBoard, getNewRandomBlocks, getRandomBlock, recalculateBoard } from "../app/utils";
-import { GameAction, GameState, TBlockVariant, TBoard, TSize } from "../types";
+import { GameAction, GameState, BlockVariant, Board, SizeBoard, INITIAL_BLOCK, RANDOM_BLOCK_VARIANT } from "../types";
 
 const initialState: GameState = {
   board: {},
@@ -12,9 +12,9 @@ const initialState: GameState = {
 export function gameReducer(state = initialState, action: GameAction): GameState {
   switch (action.type) {     
     case "initialGame": 
-      const sizeBoard: TSize = action.payload;
-      const newBoard: TBoard = getNewBoard(sizeBoard);
-      const randomBlocks: TBlockVariant[] = getNewRandomBlocks();
+      const sizeBoard: SizeBoard = action.payload;
+      const newBoard: Board = getNewBoard(INITIAL_BLOCK, sizeBoard);
+      const randomBlocks: BlockVariant[] = getNewRandomBlocks(RANDOM_BLOCK_VARIANT);
     
       const newStateForGame: GameState = {
         board: newBoard,
@@ -38,7 +38,7 @@ export function gameReducer(state = initialState, action: GameAction): GameState
         changedBoard = recalculateBoard(changedBoard.board, {x: x, y: y, value: changedBoard.value});
       } while (changedBoard.isChanged);
 
-      const newRandomBlocks = [...newBlocks.slice(1, 3), getRandomBlock()];
+      const newRandomBlocks = [...newBlocks.slice(1, 3), getRandomBlock(RANDOM_BLOCK_VARIANT)];
 
       const newStateAfterCheck: GameState = {
         ...state,
