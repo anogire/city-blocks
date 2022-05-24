@@ -1,17 +1,18 @@
 import * as React from "react";
-import styles from './Game.module.css';
-import { useAppSelector } from "../app/hooks";
-import { selectBlocks } from "./gameControl";
+import { useSelector } from "react-redux";
+import { selectBlocks } from "../../store/selectors";
+
+import './style.css';
 
 export const RandomBlocks: React.FC = () => {
-    const randomBlocks = useAppSelector(selectBlocks);
+    const randomBlocks = useSelector(selectBlocks);
 
     return (
-        <div className={styles.randomContainer}>
+        <div className="randomContainer">
             {
                 randomBlocks.map((block, i) => {
                     return (
-                        <div key={i} className={styles.block}>
+                        <div key={i} className="block">
                             {block}
                         </div>
                     );

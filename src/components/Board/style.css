@@ -1,0 +1,8 @@
+.gameBoard {
+    border: 1px solid black;
+    display: grid;
+    grid-auto-flow: column;
+    margin: 1rem;
+    /* width: 500px;
+    height: 500px; */
+  }
