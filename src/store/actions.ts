@@ -1,4 +1,5 @@
-import { Action, GeneralBlock, SizeBoard } from "../types";
+import { GeneralBlock, SizeBoard } from "../types";
+import { Action } from "./common";
 
 export const INITIAL_GAME_ACTION = "InitialGameAction";
 export const CHECK_BOARD_ACTION = "CheckBoardAction";

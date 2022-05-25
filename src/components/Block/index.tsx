@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createCheckBoardAction } from "../../modules/Game";
-import { selectBlocks } from "../../store/selectors";
+import { createCheckBoardAction, selectBlocks } from "../../store";
 import { GeneralBlock } from "../../types";
 
 import './style.css';

@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Block } from "../Block";
 import { useSelector } from "react-redux";
-import { selectBoard, selectSize } from "../../store/selectors";
+import { selectBoard, selectSize } from "../../store";
+import { Block } from "../Block";
 
 import './style.css';
 
@@ -12,11 +12,7 @@ export const Board: React.FC = () => {
     return (
         <div className="gameBoard" style={{gridTemplateRows: `repeat(${size}, 1fr)`}}>
         {
-            board.map(block => {
-                return (
-                    <Block key={`${block.x}${block.y}`} block={block} />
-                );
-            })
+            board.map(block => <Block key={`${block.x}${block.y}`} block={block} />)
         }
         </div>
     );

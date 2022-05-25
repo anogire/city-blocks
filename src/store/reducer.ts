@@ -1,7 +1,7 @@
-import { GameState, GameAction } from "../types";
-import { reduceInitialGameAction } from "../modules/Menu";
-import { reduceCheckBoardAction } from "../modules/Game";
-import { INITIAL_GAME_ACTION, CHECK_BOARD_ACTION } from "./actionTypes";
+import { GameAction, GameState } from "./common";
+import { INITIAL_GAME_ACTION, CHECK_BOARD_ACTION } from "./actions";
+import { reduceInitialGameAction } from "./initial";
+import { reduceCheckBoardAction } from "./changeBoard";
 
 const initialState: GameState = {
   board: [],

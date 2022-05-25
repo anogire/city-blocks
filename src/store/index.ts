@@ -1,4 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { gameReducer } from './gameReducer';
+export { store } from './store';
+export * from './selectors';
+export * from './actions';
 
-export const store = configureStore({reducer: gameReducer});
+export { createInitialGameAction } from './initial';
+export { createCheckBoardAction } from './changeBoard';

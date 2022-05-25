@@ -1,7 +1,8 @@
+import { GameState } from "../common";
+import { CheckBoardAction } from "../actions";
 import { getRandomBlock, recalculateBoard } from "../../utils";
 import { COUNT_NEW_RANDOM_BLOCKS, GAME_BLOCKS } from "../../consts";
-import { CheckBoardAction } from "../../store/actionTypes";
-import { GameState, GeneralBlock } from "../../types";
+import { GeneralBlock } from "../../types";
 
 export const reduceCheckBoardAction = (state: GameState, action: CheckBoardAction): GameState => {
   const block = action.payload;
@@ -22,7 +23,10 @@ export const reduceCheckBoardAction = (state: GameState, action: CheckBoardActio
     y: 0,
     ...blockInfo,
   }
-  const newRandomBlocks = [...newBlocks.slice(1, COUNT_NEW_RANDOM_BLOCKS), randomBlock];
+
+  const newRandomBlocks: GeneralBlock[] = newBlocks.slice(1, COUNT_NEW_RANDOM_BLOCKS)
+    .map(block => ({ ...block, x: block.x - 1}));
+  newRandomBlocks.push(randomBlock);
 
   const newStateAfterCheck: GameState = {
     ...state,

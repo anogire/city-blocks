@@ -1,4 +1,4 @@
-import { GameState } from "../types";
+import { GameState } from "./common";
 
 export const selectBoard = (state: GameState) => state.board;
 export const selectBlocks = (state: GameState) => state.randomBlocks;

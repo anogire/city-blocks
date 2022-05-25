@@ -19,4 +19,4 @@ export const GAME_BLOCKS: BlockProbability = [
 
 export const MAX_START_NOT_EMPTY_BLOCKS = 8;
 
-export const COUNT_NEW_RANDOM_BLOCKS = 4;
+export const COUNT_NEW_RANDOM_BLOCKS = 3;
