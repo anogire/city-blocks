@@ -4,7 +4,7 @@ import { reduceCheckBoardAction } from "../modules/Game";
 import { INITIAL_GAME_ACTION, CHECK_BOARD_ACTION } from "./actionTypes";
 
 const initialState: GameState = {
-  board: {},
+  board: [],
   randomBlocks: [],
   size: 5,
   status: "not active",

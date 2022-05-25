@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { SizeBoard, SIZE_VARIANT } from '../../types';
+import { SIZE_VARIANT } from '../../consts';
+import { SizeBoard } from '../../types';
 import { createInitialGameAction } from './actions';
 
 import './style.css';

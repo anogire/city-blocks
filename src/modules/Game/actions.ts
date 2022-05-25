@@ -1,7 +1,7 @@
 import { createAction } from "../../store/actionCreators";
 import { CheckBoardAction, CHECK_BOARD_ACTION } from "../../store/actionTypes";
-import { IBlock } from "../../types";
+import { GeneralBlock } from "../../types";
 
-export const createCheckBoardAction = (payload: IBlock): CheckBoardAction => {
+export const createCheckBoardAction = (payload: GeneralBlock): CheckBoardAction => {
     return createAction(CHECK_BOARD_ACTION, payload);
 }

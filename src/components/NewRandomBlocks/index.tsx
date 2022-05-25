@@ -13,7 +13,7 @@ export const RandomBlocks: React.FC = () => {
                 randomBlocks.map((block, i) => {
                     return (
                         <div key={i} className="block">
-                            {block}
+                            {block.value}
                         </div>
                     );
                 })
