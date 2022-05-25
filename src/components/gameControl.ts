@@ -1,9 +1,10 @@
 import { RootState } from '../app/store';
 import { getNewBoard, getNewRandomBlocks, getRandomBlock, recalculateBoard } from "../app/utils";
-import { GameAction, GameState, TBlockVariant, TBoard, TSize } from "../types";
+import { COUNT_NEW_RANDOM_BLOCKS, GAME_BLOCKS, MAX_START_NOT_EMPTY_BLOCKS } from '../consts';
+import { GameAction, GameState, Board, SizeBoard, GeneralBlock } from "../types";
 
 const initialState: GameState = {
-  board: {},
+  board: [],
   randomBlocks: [],
   size: 5,
   status: "not active",
@@ -12,9 +13,9 @@ const initialState: GameState = {
 export function gameReducer(state = initialState, action: GameAction): GameState {
   switch (action.type) {     
     case "initialGame": 
-      const sizeBoard: TSize = action.payload;
-      const newBoard: TBoard = getNewBoard(sizeBoard);
-      const randomBlocks: TBlockVariant[] = getNewRandomBlocks();
+      const sizeBoard: SizeBoard = action.payload;
+      const newBoard: Board = getNewBoard(GAME_BLOCKS, sizeBoard, MAX_START_NOT_EMPTY_BLOCKS);
+      const randomBlocks: Board = getNewRandomBlocks(GAME_BLOCKS.slice(1), COUNT_NEW_RANDOM_BLOCKS);
     
       const newStateForGame: GameState = {
         board: newBoard,
@@ -26,19 +27,27 @@ export function gameReducer(state = initialState, action: GameAction): GameState
       return newStateForGame;
 
     case "checkBoard": 
-      const {x, y, value} = action.payload;
+      const block = action.payload;
       const newBlocks = [...state.randomBlocks];
+
       let changedBoard = {
-        board: {...state.board},
-        value: value,
+        board: [...state.board],
+        value: block.value,
         isChanged: true,
       };
 
       do {
-        changedBoard = recalculateBoard(changedBoard.board, {x: x, y: y, value: changedBoard.value});
+        changedBoard = recalculateBoard(changedBoard.board, {...block, value: changedBoard.value});
       } while (changedBoard.isChanged);
 
-      const newRandomBlocks = [...newBlocks.slice(1, 3), getRandomBlock()];
+      const blockInfo = getRandomBlock(GAME_BLOCKS.slice(1));
+      const randomBlock: GeneralBlock = {
+        x: COUNT_NEW_RANDOM_BLOCKS - 1,
+        y: 0,
+        ...blockInfo,
+      }
+
+      const newRandomBlocks = [...newBlocks.slice(1, COUNT_NEW_RANDOM_BLOCKS), randomBlock];
 
       const newStateAfterCheck: GameState = {
         ...state,

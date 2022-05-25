@@ -1,24 +1,30 @@
-export const SIZE_VARIANT = [4, 5, 6] as const;
-export const BLOCK_VARIANT = [4, 8, 16, 32, 64, 128, 256, 512, 0] as const;
+import { SIZE_VARIANT } from "./consts";
 
-export type TBoard = Record<string, TBlockVariant>
-export type TSize = typeof SIZE_VARIANT[number];
-export type TBlockVariant = typeof BLOCK_VARIANT[number];
+export type BlockValue = 0 | 2 | 4 | 8 | 16 | 32 | 64 | 128 | 256 | 512 | 1024 | 2048;
+export type BlockProbability = { value: BlockValue, probability: number }[];
 
-export interface IBlock {
-    x: number,
-    y: number,
-    value: TBlockVariant,
-  }
+export type Board = GeneralBlock[];
+export type SizeBoard = typeof SIZE_VARIANT[number];
+
+export type GameStatus = "playing" | "game over" | "not active";
+
+export type GeneralBlock = {
+  x: number,
+  y: number,
+  value: BlockValue,
+  probability: number,
+};
+
+export type GeneralBlockInfo = Pick<GeneralBlock, "value" | "probability">;
 
 export interface GameState {
-    readonly board: TBoard;
-    readonly randomBlocks: TBlockVariant[];
-    readonly size: TSize;
-    readonly status: "playing" | "game over" | "not active";
-}
+  readonly board: Board;
+  readonly randomBlocks: Board;
+  readonly size: SizeBoard;
+  readonly status: GameStatus;
+};
 
 export type GameAction =
-    | { type: "initialGame", payload: TSize }
-    | { type: "checkBoard", payload: IBlock}
-    | { type: "default"}
+  | { type: "initialGame", payload: SizeBoard }
+  | { type: "checkBoard", payload: GeneralBlock}
+  | { type: "default"};
