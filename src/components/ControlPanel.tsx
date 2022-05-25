@@ -1,7 +1,8 @@
 import * as React from "react";
 import styles from './Game.module.css';
 import { useAppDispatch } from "../app/hooks";
-import { GameAction, SIZE_VARIANT, SizeBoard } from "../types";
+import { GameAction, SizeBoard } from "../types";
+import { SIZE_VARIANT } from "../consts";
 
 export const ControlPanel: React.FC = () => {
     const [sizeBoard, setSizeBoard] = React.useState<SizeBoard>(5);
