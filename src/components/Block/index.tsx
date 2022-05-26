@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createCheckBoardAction, selectBlocks } from "../../store";
+import { COUNT_NEW_RANDOM_BLOCKS } from "../../consts";
+import { createCheckBoardAction, selectNextBlocks } from "../../store";
 import { GeneralBlock } from "../../types";
 
 import './style.css';
@@ -11,22 +12,23 @@ interface BlockProps {
 
 export const Block: React.FC<BlockProps> = ({block}) => {
     const {x, y, value} = block;
-    const randomBlock = useSelector(selectBlocks);
+    const nextBlock = useSelector(selectNextBlocks);
     const dispatch = useDispatch();
 
     const onSetNewBlock = React.useCallback(
       (event: React.MouseEvent<HTMLDivElement>) => {
           if (!!value) return;
-          const newValue = randomBlock[0].value;
+          const newValue = nextBlock[COUNT_NEW_RANDOM_BLOCKS - 1].value;
           const action = createCheckBoardAction({...block, value: newValue});
           dispatch(action);
       },
-      [dispatch, block, value, randomBlock]
+      [dispatch, block, value, nextBlock]
     );
 
     return (
         <div className="block" data-id={`${x}${y}`} onClick={onSetNewBlock}>
-            {!!value ? value : null}
+            {/* [{x}, {y}] {value} */}
+                {!!value ? value : null}
         </div>
     );
 }

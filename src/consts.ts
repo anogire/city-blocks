@@ -1,6 +1,6 @@
 import { BlockProbability } from "./types";
 
-export const SIZE_VARIANT = [4, 5, 6] as const;
+export const SIZE_VARIANT = [3, 4, 5, 6] as const;
 
 export const GAME_BLOCKS: BlockProbability = [
   { value: 0, probability: 50 },
