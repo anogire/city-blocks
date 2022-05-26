@@ -6,8 +6,6 @@ export type BlockProbability = { value: BlockValue, probability: number }[];
 export type Board = GeneralBlock[];
 export type SizeBoard = typeof SIZE_VARIANT[number];
 
-export type GameStatus = "playing" | "game over" | "not active";
-
 export type GeneralBlock = {
   x: number,
   y: number,

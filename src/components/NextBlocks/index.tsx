@@ -5,13 +5,13 @@ import { Block } from "../Block";
 
 import './style.css';
 
-export const RandomBlocks: React.FC = () => {
-    const randomBlocks = useSelector(selectBlocks);
+export const NextBlocks: React.FC = () => {
+    const nextBlocks = useSelector(selectBlocks);
 
     return (
         <div className="randomContainer">
             {
-                randomBlocks.map(block => <Block key={`${block.x}${block.y}`} block={block} />)
+                nextBlocks.map(block => <Block key={`${block.x}${block.y}`} block={block} />)
             }
         </div>
     );

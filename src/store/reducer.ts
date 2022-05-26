@@ -5,7 +5,7 @@ import { reduceCheckBoardAction } from "./changeBoard";
 
 const initialState: GameState = {
   board: [],
-  randomBlocks: [],
+  nextBlocks: [],
   size: 5,
   status: "not active",
 };

@@ -1,6 +1,6 @@
 import { GameState } from "./common";
 
 export const selectBoard = (state: GameState) => state.board;
-export const selectBlocks = (state: GameState) => state.randomBlocks;
+export const selectBlocks = (state: GameState) => state.nextBlocks;
 export const selectSize = (state: GameState) => state.size;
 export const selectStatus = (state: GameState) => state.status;

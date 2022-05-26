@@ -11,17 +11,17 @@ interface BlockProps {
 
 export const Block: React.FC<BlockProps> = ({block}) => {
     const {x, y, value} = block;
-    const randomBlock = useSelector(selectBlocks);
+    const nextBlock = useSelector(selectBlocks);
     const dispatch = useDispatch();
 
     const onSetNewBlock = React.useCallback(
       (event: React.MouseEvent<HTMLDivElement>) => {
           if (!!value) return;
-          const newValue = randomBlock[0].value;
+          const newValue = nextBlock[0].value;
           const action = createCheckBoardAction({...block, value: newValue});
           dispatch(action);
       },
-      [dispatch, block, value, randomBlock]
+      [dispatch, block, value, nextBlock]
     );
 
     return (

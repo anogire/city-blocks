@@ -1,12 +1,14 @@
-import { Board, GameStatus, SizeBoard } from "../types";
+import { Board, SizeBoard } from "../types";
 import { CheckBoardAction, InitialGameAction } from "./actions";
 
 export interface GameState {
     readonly board: Board;
-    readonly randomBlocks: Board;
+    readonly nextBlocks: Board;
     readonly size: SizeBoard;
     readonly status: GameStatus;
   };
+
+export type GameStatus = "playing" | "game over" | "not active";
   
 export type GameAction = InitialGameAction | CheckBoardAction;
 
