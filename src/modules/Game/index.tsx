@@ -15,8 +15,11 @@ export const Game: React.FC = () => {
         <h1>City-Blocks</h1>
         <Menu />
         <div className="boardContainer">
-          {(status === "playing") && <RandomBlocks />}
-          {(status === "playing") && <Board />}
+          {(status === "playing") && (
+            <>
+               <RandomBlocks />
+               <Board />
+            </>)}
         </div>
       </div>
     );
