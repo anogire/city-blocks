@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
-import { selectBlocks } from "../../store";
+import { selectNextBlocks } from "../../store";
 import { Block } from "../Block";
 
 import './style.css';
 
 export const NextBlocks: React.FC = () => {
-    const nextBlocks = useSelector(selectBlocks);
+    const nextBlocks = useSelector(selectNextBlocks);
 
     return (
         <div className="randomContainer">

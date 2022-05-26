@@ -1,4 +1,4 @@
-import { COUNT_NEW_RANDOM_BLOCKS, GAME_BLOCKS } from "../../consts";
+import { GAME_BLOCKS } from "../../consts";
 import { BlockProbability, GeneralBlock } from "../../types";
 import { getNextBlock } from "./randomGenerator";
 
@@ -21,14 +21,14 @@ export const getNextBlocks = (blocks: BlockProbability, count: number): GeneralB
 export const recalculateNextBlocks = (blocks: GeneralBlock[]): GeneralBlock[] => {
     const blockInfo = getNextBlock(GAME_BLOCKS.slice(1));
     const nextBlock: GeneralBlock = {
-      x: COUNT_NEW_RANDOM_BLOCKS - 1,
+      x: 0,
       y: 0,
       ...blockInfo,
     }
   
-    const newNextBlocks: GeneralBlock[] = blocks.slice(1, COUNT_NEW_RANDOM_BLOCKS)
-      .map(block => ({ ...block, x: block.x - 1}));
-      newNextBlocks.push(nextBlock);
+    const newNextBlocks: GeneralBlock[] = blocks.slice(0, -1)
+      .map(block => ({ ...block, x: block.x + 1}));
+      newNextBlocks.unshift(nextBlock);
   
     return newNextBlocks;
   }
