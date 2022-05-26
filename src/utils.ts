@@ -1,5 +1,5 @@
-import { GAME_BLOCKS } from "../consts";
-import { BlockProbability, BlockValue, Board, GeneralBlock, GeneralBlockInfo, SizeBoard } from "../types";
+import { GAME_BLOCKS } from "./consts";
+import { BlockProbability, BlockValue, Board, GeneralBlock, GeneralBlockInfo, SizeBoard } from "./types";
 
 const findBlock = (board: Board, x: number, y: number) => {
   return board.find(block => block.x === x && block.y === y);

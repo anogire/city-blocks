@@ -1,19 +1,18 @@
-import * as React from "react";
-import styles from './Game.module.css';
-import { useAppDispatch } from "../app/hooks";
-import { GameAction, SizeBoard } from "../types";
-import { SIZE_VARIANT } from "../consts";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { createInitialGameAction } from '../../store';
+import { SIZE_VARIANT } from '../../consts';
+import { SizeBoard } from '../../types';
 
-export const ControlPanel: React.FC = () => {
+import './style.css';
+
+export const Menu: React.FC = () => {
     const [sizeBoard, setSizeBoard] = React.useState<SizeBoard>(5);
-    const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
   
     const onStartNewGame = React.useCallback(
       (event: React.MouseEvent<HTMLButtonElement>) => {
-          const action: GameAction = {
-              type: "initialGame",
-              payload: sizeBoard,
-          };
+          const action = createInitialGameAction(sizeBoard);
           dispatch(action);
       },
       [dispatch, sizeBoard]
@@ -30,7 +29,7 @@ export const ControlPanel: React.FC = () => {
                 value={sizeBoard}
                 onChange={onSizeChange}
                 aria-label="choose size of board"
-                className={styles.selectSizeBoard}
+                className="selectSizeBoard"
             >
             {SIZE_VARIANT.map((size, i) => (
                 <option key={i} value={size}>

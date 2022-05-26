@@ -16,15 +16,3 @@ export type GeneralBlock = {
 };
 
 export type GeneralBlockInfo = Pick<GeneralBlock, "value" | "probability">;
-
-export interface GameState {
-  readonly board: Board;
-  readonly randomBlocks: Board;
-  readonly size: SizeBoard;
-  readonly status: GameStatus;
-};
-
-export type GameAction =
-  | { type: "initialGame", payload: SizeBoard }
-  | { type: "checkBoard", payload: GeneralBlock}
-  | { type: "default"};

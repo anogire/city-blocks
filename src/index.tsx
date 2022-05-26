@@ -1,20 +1,19 @@
-import React from 'react';
+import React from "react";
 import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { store } from './app/store';
-import reportWebVitals from './reportWebVitals';
+import { Provider } from "react-redux";
+import { Game } from "./modules/Game";
+import { store } from "./store";
+
 import './index.css';
-import { App } from './App';
 
-const container = document.getElementById('root')!;
-const root = createRoot(container);
+const App: React.FC = () =>  {
+  
+  return (
+      <Provider store={store}>
+        <Game />
+      </Provider>
+  );
+}
 
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
-);
-
-reportWebVitals();
+const root = createRoot(document.getElementById('root')!);
+root.render(<App />);
