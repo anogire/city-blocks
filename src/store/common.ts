@@ -6,6 +6,7 @@ export interface GameState {
     readonly nextBlocks: Board;
     readonly size: SizeBoard;
     readonly status: GameStatus;
+    readonly score: number;
   };
 
 export type GameStatus = "playing" | "game over" | "not active";

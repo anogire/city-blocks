@@ -9,11 +9,14 @@ export const reduceInitialGameAction = (state: GameState, action: InitialGameAct
   const newBoard: Board = getNewBoard(GAME_BLOCKS, sizeBoard, MAX_START_NOT_EMPTY_BLOCKS);
   const nextBlocks: Board = getNextBlocks(GAME_BLOCKS.slice(1), COUNT_NEW_RANDOM_BLOCKS);
 
+  const score = newBoard.reduce((sum, block) => sum += block.value, 0);
+
   const newStateForGame: GameState = {
     board: newBoard,
     nextBlocks: nextBlocks,
     size: sizeBoard,
     status: "playing",
+    score: score,
   };
   
   return newStateForGame;

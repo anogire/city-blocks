@@ -8,12 +8,14 @@ export const reduceCheckBoardAction = (state: GameState, action: CheckBoardActio
     board: [...state.board],
     value: block.value,
     isChanged: true,
+    score: state.score,
   };
 
   do {
-    changedBoard = recalculateBoard(changedBoard.board, {...block, value: changedBoard.value});
+    changedBoard = recalculateBoard(changedBoard.board, {...block, value: changedBoard.value}, changedBoard.score);
   } while (changedBoard.isChanged);
 
+  const newScore = changedBoard.score + block.value;
   const newBlocks = [...state.nextBlocks];
   const newNextBlocks = recalculateNextBlocks(newBlocks);
   const newStatus = isGameOver(changedBoard.board, newNextBlocks[0]) ? "game over" : state.status;
@@ -23,6 +25,7 @@ export const reduceCheckBoardAction = (state: GameState, action: CheckBoardActio
     board: changedBoard.board,
     nextBlocks: newNextBlocks,
     status: newStatus,
+    score: newScore,
   };
   
   return newStateAfterCheck;

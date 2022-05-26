@@ -23,7 +23,7 @@ export const Menu: React.FC = () => {
     }, []);
 
     return (
-        <div>
+        <div className="wrap">
             <select
                 name="sizeBoard"
                 value={sizeBoard}

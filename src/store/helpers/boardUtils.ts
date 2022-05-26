@@ -54,7 +54,7 @@ export const isGameOver = (board: Board, nextBlock: GeneralBlock): boolean => {
   const {value} = nextBlock;
 
   const neighbors = getAllNeighbors(board, x, y, value);
-  
+
   return neighbors.length <= 1;
 }
 
@@ -97,23 +97,26 @@ export const getNewBoard = (blocks: BlockProbability, size: SizeBoard, limit: nu
     return board;
   }
 
-export const recalculateBoard = (board: Board, block: GeneralBlock): 
+export const recalculateBoard = (board: Board, block: GeneralBlock, score: number): 
   {
     board: Board,
     isChanged: boolean,
     value: BlockValue,
+    score: number,
   } => {
 
   const newBoard = [...board];
   const {x, y} = block;
   let isChanged = false;
   let newValue = block.value;
+  let newScore = score;
 
   const neighbors = getAllNeighbors(newBoard, x, y, newValue);
 
   if (neighbors.length > 1) {
     isChanged = true;
-    newValue = newValue * 2 as BlockValue;
+    newScore += neighbors.length * newValue;
+    newValue = newValue * 2;
 
     neighbors.map(neighbor => {
       const index = findBlockIndex(board, neighbor[0], neighbor[1]);
@@ -135,5 +138,6 @@ export const recalculateBoard = (board: Board, block: GeneralBlock):
     board: newBoard, 
     isChanged: isChanged, 
     value: newValue,
+    score: newScore,
   };
 }

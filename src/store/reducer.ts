@@ -8,6 +8,7 @@ const initialState: GameState = {
   nextBlocks: [],
   size: 5,
   status: "not active",
+  score: 0,
 };
 
 export const gameReducer = (state = initialState, action: GameAction): GameState => {
