@@ -1,9 +1,10 @@
 import { GameAction, GameState } from "./common";
-import { INITIAL_GAME_ACTION, CHECK_BOARD_ACTION } from "./actions";
+import { INITIAL_GAME_ACTION, CHECK_BOARD_ACTION, CHANGE_STATUS_ACTION } from "./actions";
 import { reduceInitialGameAction } from "./initial";
 import { reduceCheckBoardAction } from "./changeBoard";
+import { reduceChangeStatusAction } from "./changeStatus";
 
-const initialState: GameState = {
+export const initialState: GameState = {
   board: [],
   nextBlocks: [],
   size: 5,
@@ -14,8 +15,8 @@ const initialState: GameState = {
 export const gameReducer = (state = initialState, action: GameAction): GameState => {
   switch (action.type) {     
     case INITIAL_GAME_ACTION: return reduceInitialGameAction(state, action);
-
     case CHECK_BOARD_ACTION: return reduceCheckBoardAction(state, action);
+    case CHANGE_STATUS_ACTION: return reduceChangeStatusAction(state, action);
 
     default:
       return state;

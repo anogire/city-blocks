@@ -1,9 +1,10 @@
 import { GameState } from "../common";
 import { CheckBoardAction } from "../actions";
 import { isGameOver, recalculateBoard, recalculateNextBlocks } from "../helpers";
+import { initialState } from "../reducer";
 
 export const reduceCheckBoardAction = (state: GameState, action: CheckBoardAction): GameState => {
-  const block = action.payload;
+  const block = action.payload!;
   let changedBoard = {
     board: [...state.board],
     value: block.value,
@@ -21,15 +22,19 @@ export const reduceCheckBoardAction = (state: GameState, action: CheckBoardActio
 
   const newBlocks = [...state.nextBlocks];
   const newNextBlocks = recalculateNextBlocks(newBlocks);
-  const newStatus = isGameOver(changedBoard.board) ? "game over" : state.status;
 
-  const newStateAfterCheck: GameState = {
-    ...state,
-    board: changedBoard.board,
-    nextBlocks: newNextBlocks,
-    status: newStatus,
-    score: newScore,
-  };
+  const newStateAfterCheck: GameState = isGameOver(changedBoard.board)
+    ? { 
+      ...initialState, 
+      status: "game over",
+      score: newScore,
+    }
+    : {
+      ...state,
+      board: changedBoard.board,
+      nextBlocks: newNextBlocks,
+      score: newScore,
+    };
   
   return newStateAfterCheck;
 }

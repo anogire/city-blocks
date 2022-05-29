@@ -9,7 +9,7 @@ export const NextBlocks: React.FC = () => {
     const nextBlocks = useSelector(selectNextBlocks);
 
     return (
-        <div className="randomContainer">
+        <div className="next-blocks-container">
             {
                 nextBlocks.map(block => <Block key={`${block.x}${block.y}`} block={block} />)
             }

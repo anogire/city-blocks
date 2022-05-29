@@ -10,7 +10,12 @@ export const Board: React.FC = () => {
     const size = useSelector(selectSize);
 
     return (
-        <div className="gameBoard" style={{gridTemplateRows: `repeat(${size}, 1fr)`}}>
+        <div
+            className="game-board"
+            style={{
+                gridTemplateColumns: `repeat(${size}, minmax(auto, 1fr))`, 
+                gridTemplateRows: `repeat(${size}, minmax(auto, 1fr))`,
+            }}>
         {
             board.map(block => <Block key={`${block.x}${block.y}`} block={block} />)
         }

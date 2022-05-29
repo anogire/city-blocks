@@ -1,8 +1,15 @@
 .block {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    width: 70px;
-    height: 70px;
-  }
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  background-color: #fff;
+  cursor: pointer;
+}
+  
+.block:after {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}

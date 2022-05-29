@@ -2,12 +2,13 @@ h2 {
     margin: 0;
 }
 
-.score {
+.joker {
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 1.2rem 0 0 1.2rem;
+    margin: 0 0 1.2rem 1.2rem;
+    cursor: pointer;
 }
