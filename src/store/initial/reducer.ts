@@ -17,6 +17,7 @@ export const reduceInitialGameAction = (state: GameState, action: InitialGameAct
     size: sizeBoard,
     status: "playing",
     score: score,
+    money: state.money,
   };
   
   return newStateForGame;

@@ -27,5 +27,6 @@ export const getNextBlock = (blocks: BlockProbability): GeneralBlockInfo => {
     return {
       value: blockVariant[index],
       probability: probability[index],
+      price: blocks[index].price,
     };
   }
