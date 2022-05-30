@@ -1,21 +1,24 @@
 import * as React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { createGetBonusAction, selectScore } from "../../store";
+import { useDispatch } from "react-redux";
+import { createGetBonusAction} from "../../store";
 
 import './style.css';
+interface BlockProps {
+    score: number;
+    min: number,
+    max: number,
+}
 
-export const Score: React.FC = () => {
-    const score = useSelector(selectScore);
-    const [jokerIndicator, setJokerIndicator] = React.useState(0);
+export const Score: React.FC<BlockProps> = ({score, min, max}) => {
     const dispatch = useDispatch();
+    console.log(min, score, max);
 
     React.useEffect(() => {
-        if (score >= jokerIndicator + 100) {
-            setJokerIndicator(score);
+        if (score >= max) {
             const action = createGetBonusAction(1);
             dispatch(action);
         }
-    }, [dispatch, score, jokerIndicator]);
+    }, [dispatch, score, max]);
 
     return (
         <div className="score">
@@ -27,7 +30,7 @@ export const Score: React.FC = () => {
                 value={score}
                 type="range"
                 onChange={() => {}}
-                min={jokerIndicator} max={jokerIndicator + 100} step="1"
+                min={min} max={max} step="1"
             />
         </div>
     );

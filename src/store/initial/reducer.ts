@@ -3,6 +3,7 @@ import { InitialGameAction } from "../actions";
 import { COUNT_NEW_RANDOM_BLOCKS, GAME_BLOCKS, MAX_START_NOT_EMPTY_BLOCKS } from "../../consts";
 import { Board, SizeBoard } from "../../types";
 import { getNewBoard, getNextBlocks } from "../helpers";
+import { initialState } from "../reducer";
 
 export const reduceInitialGameAction = (state: GameState, action: InitialGameAction): GameState => {
   const sizeBoard: SizeBoard = action.payload!;
@@ -17,7 +18,7 @@ export const reduceInitialGameAction = (state: GameState, action: InitialGameAct
     size: sizeBoard,
     status: "playing",
     score: score,
-    money: state.money,
+    money: initialState.money,
   };
   
   return newStateForGame;
