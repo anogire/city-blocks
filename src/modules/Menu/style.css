@@ -1,7 +1,11 @@
-.selectSizeBoard {
-  margin-right: 1rem;
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.wrap {
-  margin: 0 auto;
+.menu__size-board {
+  padding: 10px;
+  cursor: pointer;
 }

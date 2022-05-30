@@ -1,10 +1,11 @@
-.randomContainer {
+.next-blocks-container {
   display: flex;
+  width: 70px;
   flex-direction: column;
   margin: 1rem;
   border: 1px solid black;
 }
     
-.randomContainer :last-child {
+.next-blocks-container :last-child {
   background-color: lightblue;
 }
