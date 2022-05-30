@@ -27,8 +27,7 @@ export const Block: React.FC<BlockProps> = ({block}) => {
 
     return (
         <div className="block" data-id={`${x}${y}`} onClick={onSetNewBlock}>
-            {/* [{x}, {y}] {value} */}
-                {!!value ? value : null}
+            {!!value ? value : null}
         </div>
     );
 }

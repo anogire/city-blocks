@@ -1,4 +1,4 @@
-import { COUNT_NEW_RANDOM_BLOCKS, GAME_BLOCKS } from "../../consts";
+import { GAME_BLOCKS } from "../../consts";
 import { BlockProbability, GeneralBlock } from "../../types";
 import { getNextBlock } from "./randomGenerator";
 
