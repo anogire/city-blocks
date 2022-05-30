@@ -13,11 +13,11 @@ export const reduceCheckBoardAction = (state: GameState, action: CheckBoardActio
   };
 
   let newScore = state.score + block.value;
-  let degree = 1;
+  let multiplier = 1;
 
   do {
     changedBoard = recalculateBoard(changedBoard.board, {...block, value: changedBoard.value});
-    if (changedBoard.isChanged) newScore += changedBoard.score * degree++;
+    if (changedBoard.isChanged) newScore += changedBoard.score * multiplier++;
   } while (changedBoard.isChanged);
 
   const newBlocks = [...state.nextBlocks];

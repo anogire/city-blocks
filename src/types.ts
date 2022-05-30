@@ -1,6 +1,6 @@
 import { SIZE_VARIANT } from "./consts";
 
-export type BlockValue = number;
+export type BlockValue = 0 | 2 | 4 | 8 | 16 | 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096 | 8192 | 16384;
 export type BlockProbability = { value: BlockValue, probability: number, price : number }[];
 
 export type Board = GeneralBlock[];
