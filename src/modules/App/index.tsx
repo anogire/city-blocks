@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectMoney, selectScore, selectStatus } from "../../store";
+import { selectStatus } from "../../store";
 import { Menu } from "../Menu";
 import { Game } from "../Game";
 import { JokerStore, GameOver, Portal } from "../../components/Overlay";
@@ -12,17 +12,6 @@ import './style.css';
 
 export const App: React.FC = () => {
   const status = useSelector(selectStatus);
-  const score = useSelector(selectScore);
-  const money = useSelector(selectMoney);
-
-  const [isMoneyChanged, setIsMoneyChanged] = React.useState(score);
-
-  React.useEffect(() => {
-    setIsMoneyChanged(money);
-  }, [money]);
-
-  const isMoneyIncrease = money > isMoneyChanged;
-  const startForNewBonus = React.useMemo(() => (score <= 100) ? 0 : score, [isMoneyIncrease]);
 
   return (
     <div className="main">
@@ -36,7 +25,7 @@ export const App: React.FC = () => {
             {(status === "playing")
             && <>
                 <Game />
-                <Score score={score} min={startForNewBonus} max={startForNewBonus + 100}/>
+                <Score />
                 <Joker />
                 <Exit />
               </>}

@@ -6,3 +6,4 @@ export const selectSize = (state: GameState) => state.size;
 export const selectStatus = (state: GameState) => state.status;
 export const selectScore = (state: GameState) => state.score;
 export const selectMoney = (state: GameState) => state.money;
+export const selectNextMilestone = (state: GameState) => state.nextMilestone;

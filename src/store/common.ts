@@ -8,6 +8,11 @@ export interface GameState {
     readonly status: GameStatus;
     readonly score: number;
     readonly money: number;
+    readonly nextMilestone: {
+        isChanged: boolean,
+        min: number,
+        max: number,
+    };
   };
 
 export type GameStatus = "playing" | "game over" | "not active" | "store";

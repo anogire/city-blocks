@@ -13,6 +13,11 @@ export const initialState: GameState = {
   status: "not active",
   score: 0,
   money: 2,
+  nextMilestone: {
+    isChanged: false,
+    min: 0,
+    max: 100,
+  }
 };
 
 export const gameReducer = (state = initialState, action: GameAction): GameState => {

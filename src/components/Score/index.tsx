@@ -1,24 +1,20 @@
 import * as React from "react";
-import { useDispatch } from "react-redux";
-import { createGetBonusAction} from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { createGetBonusAction, selectNextMilestone, selectScore} from "../../store";
 
 import './style.css';
-interface BlockProps {
-    score: number;
-    min: number,
-    max: number,
-}
 
-export const Score: React.FC<BlockProps> = ({score, min, max}) => {
+export const Score: React.FC = () => {
+    const score = useSelector(selectScore);
+    const { isChanged, min, max } = useSelector(selectNextMilestone);
     const dispatch = useDispatch();
-    console.log(min, score, max);
 
     React.useEffect(() => {
-        if (score >= max) {
+        if (isChanged) {
             const action = createGetBonusAction(1);
             dispatch(action);
         }
-    }, [dispatch, score, max]);
+    }, [dispatch, isChanged]);
 
     return (
         <div className="score">

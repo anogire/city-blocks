@@ -19,6 +19,7 @@ export const reduceInitialGameAction = (state: GameState, action: InitialGameAct
     status: "playing",
     score: score,
     money: initialState.money,
+    nextMilestone: { ...initialState.nextMilestone },
   };
   
   return newStateForGame;
