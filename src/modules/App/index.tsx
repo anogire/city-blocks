@@ -23,7 +23,8 @@ export const App: React.FC = () => {
             <Portal>
               <GameOver isVisible={status === "game over"} />
               <JokerStore isVisible={status === "store"} />
-              {(status === "not active" || status === "game over") && <Menu />}
+            </Portal>
+              {(status === "not active") && <Menu />}
               {(status === "playing")
               && <>
                 <Game />
@@ -32,7 +33,6 @@ export const App: React.FC = () => {
                 <Exit />
               </>
               }
-            </Portal>
             <SoundContainer />
           </SoundProvider>
         </div>    
