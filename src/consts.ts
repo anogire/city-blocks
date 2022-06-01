@@ -20,3 +20,7 @@ export const GAME_BLOCKS: BlockProbability = [
 export const MAX_START_NOT_EMPTY_BLOCKS = 8;
 
 export const COUNT_NEW_RANDOM_BLOCKS = 3;
+
+export const CLICK_SOUND_ID = "sound-click";
+export const SET_BLOCK_SOUND_ID = "sound-set-block";
+export const GAME_OVER_SOUND_ID = "sound-game-over";
