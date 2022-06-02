@@ -1,8 +1,19 @@
-.game-board {
-    border: 1px solid black;
-    display: grid;
-    grid-auto-flow: column;
-    margin: 1rem;
-    width: 400px;
-    height: 400px;
-  }
+.game-board{
+  width: 22rem;
+  height: 22rem;
+  position: relative;
+  background: #c6e4ee;
+  box-shadow: .25rem .25rem 1rem rgba(0,0,0,.2);
+  transform: rotatex(35deg) rotateZ(65deg) rotateY(-20deg) translateZ(-1rem);
+  transform-style: preserve-3d;
+  display: grid;   
+  align-self: flex-start;  
+}
+
+.game-board div{
+  float: left;
+  background: #f6f6f6;
+  transform-origin: 100% 100%;
+  position: relative;
+  box-shadow: .125em .125em .5em rgba(0,0,0,.09);
+}

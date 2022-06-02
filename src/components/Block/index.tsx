@@ -8,10 +8,12 @@ interface BlockProps {
 }
 
 export const Block: React.FC<BlockProps> = ({block}) => {
-
+    const value = block.value;
     return (
-        <div className="block" data-block={JSON.stringify(block)}>
-            {!!block.value ? block.value : null}
+        <div className={`${!!value ? `cube` : ""}`} data-block={JSON.stringify(block)}>
+            <span className={`${!!value ? `marker` : ""}`}>
+                {!!value ? value : null}
+            </span>
         </div>
     );
 }

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { COUNT_NEW_RANDOM_BLOCKS, GAME_BLOCKS } from "../../consts";
 import { createBuyJokerAction, createChangeStatusAction, selectMoney, selectNextBlocks } from "../../store";
 import { GeneralBlock } from "../../types";
-import { Block } from "../Block";
+// import { Block } from "../Block";
 import { ButtonWithSound } from "../Sound";
 
 import "./style.css";
@@ -52,7 +52,12 @@ export const JokerStore: React.FC<JokerProps> = ({ isVisible }) => {
                             }}
                             onClick={onBuyJokerBlock}
                         >
-                            <Block block={{...block, x: nextBlock.x, y: nextBlock.y}} />
+                            <div
+                                className="block"
+                                data-block={JSON.stringify({...block, x: nextBlock.x, y: nextBlock.y})}
+                            >
+                                {!!block.value ? block.value : null}
+                            </div>
                             <div className="joker-price">{block.price}</div>
                         </div>
                     )}
