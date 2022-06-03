@@ -13,8 +13,8 @@ export const NextBlocks: React.FC = () => {
         <div
             className="next-blocks-container"
             style={{
-                gridTemplateColumns: `repeat(${COUNT_NEW_RANDOM_BLOCKS}, minmax(auto, 1fr))`, 
-                gridTemplateRows: `repeat(1, minmax(auto, 1fr))`,
+                gridTemplateRows: `repeat(${COUNT_NEW_RANDOM_BLOCKS}, minmax(auto, 1fr))`, 
+                gridTemplateColumns: `repeat(1, minmax(auto, 1fr))`,
             }}
         >
             {

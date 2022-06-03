@@ -4,6 +4,10 @@
   transform: translateZ(2rem);
 }
 
+.cube:hover {
+  box-shadow: 0.125em 0.125em 0.5em rgb(0 0 0 / 9%) !important;
+}
+
 .cube:before, .cube:after{
   content:"";
   background:#c6e4ee;
@@ -23,7 +27,7 @@
 .cube:after{
   width: 2rem;
   height: 100%;
-  right: 0;
+  right: 100%;
   top: 0;
   transform: rotateY(90deg) translateX(2rem);
   box-shadow: inset -.125rem 0rem .25rem rgba(0,0,0,.1);
@@ -34,7 +38,7 @@
   height: 100%;
   position: absolute !important;
   bottom: 50%;
-  right: 30%;
+  right: 50%;
   color: #000;
   display: flex;
   justify-content: center;
@@ -42,8 +46,8 @@
   transform: 
     translateX(50%)
     translateY(50%)
-    translateZ(1rem)
-    rotateZ(-90deg)
-    rotateY(20deg)
-    rotateX(-60deg);
+    translateZ(.5rem)
+    rotateX(-45deg)
+    rotateZ(25deg)
+    rotateY(-20deg);
 }

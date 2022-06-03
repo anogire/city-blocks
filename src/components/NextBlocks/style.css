@@ -1,13 +1,13 @@
 .next-blocks-container{
-  width: 210px;
-  height: 70px;
+  width: 70px;
+  height: 210px;
   position: relative;
   background: #c6e4ee;
   box-shadow: .25rem .25rem 1rem rgba(0,0,0,.2);
-  transform: rotatex(35deg) rotateZ(65deg) rotateY(-20deg) translateZ(-1rem);
+  transform: rotateX(45deg) rotateZ(-35deg) translateZ(-10rem);
   transform-style: preserve-3d;
   display: grid;
-  align-self: center;  
+  align-self: center;
 }
 
 .next-blocks-container div{
