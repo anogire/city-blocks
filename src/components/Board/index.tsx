@@ -16,10 +16,11 @@ export const Board: React.FC = () => {
     const dispatch = useDispatch();
 
     const onSetNewBlock = React.useCallback(
-        (event: React.MouseEvent<HTMLElement>) => {
-            const block: GeneralBlock = JSON.parse((event.target as HTMLDivElement).dataset.block!);
+        (event: React.MouseEvent<Element, MouseEvent>) => {
+            const element = event.target as HTMLElement;
+            if (element.nodeName !== "DIV" || !!element.childElementCount) return;
 
-            if (!!block.value) return;
+            const block: GeneralBlock = JSON.parse(element.dataset.block!);
 
             const action = createCheckBoardAction({
                 ...block, 

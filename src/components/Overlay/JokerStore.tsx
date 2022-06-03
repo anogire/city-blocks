@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { COUNT_NEW_RANDOM_BLOCKS, GAME_BLOCKS } from "../../consts";
 import { createBuyJokerAction, createChangeStatusAction, selectMoney, selectNextBlocks } from "../../store";
 import { GeneralBlock } from "../../types";
-// import { Block } from "../Block";
 import { ButtonWithSound } from "../Sound";
 
 import "./style.css";

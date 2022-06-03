@@ -10,15 +10,3 @@
   align-self: flex-start;
   margin-top: 2rem;  
 }
-
-.game-board div{
-  float: left;
-  background: #f6f6f6;
-  transform-origin: 100% 100%;
-  position: relative;
-  box-shadow: .125em .125em .5em rgba(0,0,0,.09);
-}
-
-.game-board div:hover {
-  box-shadow: inset 0em 0em .2em .2em #c6e4ee;
-}
