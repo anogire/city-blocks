@@ -11,21 +11,19 @@ import './style.css';
 export const Board: React.FC = () => {
     const board = useSelector(selectBoard);
     const size = useSelector(selectSize);
-    const nextBlock = useSelector(selectNextBlocks)[COUNT_NEW_RANDOM_BLOCKS - 1];
 
+    const nextBlock = useSelector(selectNextBlocks)[COUNT_NEW_RANDOM_BLOCKS - 1];
     const dispatch = useDispatch();
 
     const onSetNewBlock = React.useCallback(
-        (event: React.MouseEvent<Element, MouseEvent>) => {
-            const element = event.target as HTMLElement;
-            if (element.nodeName !== "DIV" || !!element.childElementCount) return;
-
-            const block: GeneralBlock = JSON.parse(element.dataset.block!);
+        (event: React.MouseEvent<HTMLElement>) => {
+            const block: GeneralBlock = JSON.parse((event.target as HTMLElement).dataset.block!);
 
             const action = createCheckBoardAction({
                 ...block, 
-                value: nextBlock.value, 
-                price: nextBlock.price
+                value: nextBlock.value,
+                probability: nextBlock.probability,
+                price: nextBlock.price,
             });
             dispatch(action);
         },
@@ -33,18 +31,26 @@ export const Board: React.FC = () => {
     );
 
     return (
-        <ElementWithSound 
-            soundType="set block"
-            onClick={onSetNewBlock} 
-            classNames="game-board"
-            inlineStyle={{
+        <div
+            className="game-board"
+            style={{
                 gridTemplateColumns: `repeat(${size}, minmax(auto, 1fr))`, 
                 gridTemplateRows: `repeat(${size}, minmax(auto, 1fr))`,
             }}
         >
             {
-                board.map(block => <Block key={`${block.x}${block.y}`} block={block} />)
+                board.map(block => 
+                !!block.value
+                ?  <Block key={`${block.x}${block.y}`} block={block} />
+                :  <ElementWithSound
+                        key={`${block.x}${block.y}`}
+                        soundType="set block"
+                        onClick={onSetNewBlock} 
+                        dataBlock={JSON.stringify({x: block.x, y: block.y})}
+                        classNames="inner-effect"
+                    />
+                )
             }
-        </ElementWithSound>
+        </div>
     );
 }

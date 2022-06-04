@@ -1,12 +1,23 @@
 .game-board{
-  width: 22rem;
-  height: 22rem;
+  width: 24rem;
+  height: 24rem;
   position: relative;
-  background: #c6e4ee;
   box-shadow: .25rem .25rem 1rem rgba(0,0,0,.2);
   transform: rotateX(45deg) rotateZ(-35deg);
   transform-style: preserve-3d;
   display: grid;   
   align-self: flex-start;
   margin-top: 2rem;  
+}
+
+.game-board div {
+  background: #f6f6f6;
+  transform-origin: 100% 100%;
+  position: relative;
+  box-shadow: .125em .125em .5em rgba(0,0,0,.09);
+}
+
+.inner-effect:hover {
+  box-shadow: inset 0em 0em .2em .2em #c6e4ee;
+  cursor: pointer;
 }

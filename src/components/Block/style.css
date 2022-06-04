@@ -1,23 +1,9 @@
-.empty-cell {
-  float: left;
-  background: #f6f6f6;
-  transform-origin: 100% 100%;
-  position: relative;
-  box-shadow: .125em .125em .5em rgba(0,0,0,.09);
-}
-
-.empty-cell:hover {
-  box-shadow: inset 0em 0em .2em .2em #c6e4ee;
-}
-
 .cube {
-  background:#fff !important;
+  min-width: 4rem;
+  min-height: 4rem;
+  background:#fff;
   transform-style: preserve-3d;
   transform: translateZ(2rem);
-}
-
-.cube:hover {
-  box-shadow: 0.125em 0.125em 0.5em rgb(0 0 0 / 9%) !important;
 }
 
 .cube:before, .cube:after{
