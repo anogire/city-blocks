@@ -14,8 +14,14 @@
   transform-origin: 100% 100%;
   position: relative;
   box-shadow: .125em .125em .5em rgba(0,0,0,.09);
+  animation-delay: 0s !important;
+}
+
+.next-blocks-container div:first-child {
+  animation-delay: .2s !important;
 }
 
 .next-blocks-container div:last-child {
   background: #c6e4ee !important;
+  animation-delay: .4s !important;
 }
