@@ -23,6 +23,8 @@ export const reduceCheckBoardAction = (state: GameState, action: CheckBoardActio
   const newBlocks = [...state.nextBlocks];
   const newNextBlocks = recalculateNextBlocks(newBlocks);
 
+  const isNextMilestone = newScore >= state.nextMilestone.max;
+
   const newStateAfterCheck: GameState = isGameOver(changedBoard.board)
     ? { 
       ...initialState, 
@@ -34,6 +36,10 @@ export const reduceCheckBoardAction = (state: GameState, action: CheckBoardActio
       board: changedBoard.board,
       nextBlocks: newNextBlocks,
       score: newScore,
+      nextMilestone: {
+        ...state.nextMilestone,
+        isChanged: isNextMilestone,
+      }
     };
   
   return newStateAfterCheck;

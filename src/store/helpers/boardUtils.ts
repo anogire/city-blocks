@@ -10,8 +10,13 @@ const findBlockIndex = (board: Board, x: number, y: number) => {
   return board.findIndex(block => block.x === x && block.y === y);
 }
   
-const findProbability = (blocks: BlockProbability, value: BlockValue) => {
-  return blocks.find(block => block.value === value)!.probability;
+const findBlockInfo = (blocks: BlockProbability, value: BlockValue) => {
+  const block = blocks.find(block => block.value === value)!;
+
+  return {
+    probability: block.probability,
+    price: block.price,
+  };
 }
 
 const getNeighbors = (board: Board, x: number, y: number, value: BlockValue): number[][] => {
@@ -114,18 +119,22 @@ export const recalculateBoard = (board: Board, block: GeneralBlock):
 
     neighbors.map(neighbor => {
       const index = findBlockIndex(board, neighbor[0], neighbor[1]);
+      const blockInfo = findBlockInfo(GAME_BLOCKS, 0);
       return newBoard[index] = {
         ...newBoard[index],
         value: 0,
-        probability: findProbability (GAME_BLOCKS, 0),
+        probability: blockInfo.probability,
+        price: blockInfo.price,
       }
     });
   }
 
+  const blockInfo = findBlockInfo(GAME_BLOCKS, newValue);
   newBoard[findBlockIndex(board, x, y)] = {
     ...block,
     value: newValue,
-    probability: findProbability (GAME_BLOCKS, newValue),
+    probability: blockInfo.probability,
+    price: blockInfo.price,
   };
 
   return {
