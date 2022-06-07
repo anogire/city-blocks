@@ -1,11 +1,21 @@
-.next-blocks-container {
+.next-blocks-container{
+  width: 4rem;
+  position: relative;
+  background: #c6e4ee;
+  box-shadow: .25rem .25rem 1rem rgba(0,0,0,.2);
+  transform: rotateX(45deg) rotateZ(-35deg) translateZ(-10rem);
+  transform-style: preserve-3d;
   display: flex;
-  width: 70px;
   flex-direction: column;
-  margin: 1rem;
-  border: 1px solid black;
 }
-    
-.next-blocks-container :last-child {
-  background-color: lightblue;
+
+.next-blocks-container div{
+  background: #f6f6f6;
+  transform-origin: 100% 100%;
+  position: relative;
+  box-shadow: .125em .125em .5em rgba(0,0,0,.09);
+}
+
+.next-blocks-container div:last-child {
+  background: #c6e4ee !important;
 }

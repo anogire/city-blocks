@@ -4,10 +4,11 @@ import { isGameOver, recalculateBoard, recalculateNextBlocks } from "../helpers"
 import { initialState } from "../reducer";
 
 export const reduceCheckBoardAction = (state: GameState, action: CheckBoardAction): GameState => {
+
   const block = action.payload!;
   let changedBoard = {
     board: [...state.board],
-    value: block.value,
+    block: block,
     isChanged: true,
     score: 0,
   };
@@ -16,7 +17,7 @@ export const reduceCheckBoardAction = (state: GameState, action: CheckBoardActio
   let multiplier = 1;
 
   do {
-    changedBoard = recalculateBoard(changedBoard.board, {...block, value: changedBoard.value});
+    changedBoard = recalculateBoard(changedBoard.board, {...changedBoard.block});
     if (changedBoard.isChanged) newScore += changedBoard.score * multiplier++;
   } while (changedBoard.isChanged);
 
@@ -41,6 +42,6 @@ export const reduceCheckBoardAction = (state: GameState, action: CheckBoardActio
         isChanged: isNextMilestone,
       }
     };
-  
+
   return newStateAfterCheck;
 }

@@ -99,15 +99,15 @@ export const getNewBoard = (blocks: BlockProbability, size: SizeBoard, limit: nu
 export const recalculateBoard = (board: Board, block: GeneralBlock): 
   {
     board: Board,
+    block: GeneralBlock,
     isChanged: boolean,
-    value: BlockValue,
     score: number,
   } => {
 
   const newBoard = [...board];
-  const {x, y} = block;
+  let newBlock = block;
+  let {x, y, value: newValue} = block;
   let isChanged = false;
-  let newValue = block.value;
   let newScore = 0;
 
   const neighbors = getAllNeighbors(newBoard, x, y, newValue);
@@ -116,31 +116,33 @@ export const recalculateBoard = (board: Board, block: GeneralBlock):
     isChanged = true;
     newScore = neighbors.length * newValue;
     newValue = newValue * 2 as BlockValue;
+    const emptyBlock = findBlockInfo(GAME_BLOCKS, 0);
 
     neighbors.map(neighbor => {
       const index = findBlockIndex(board, neighbor[0], neighbor[1]);
-      const blockInfo = findBlockInfo(GAME_BLOCKS, 0);
       return newBoard[index] = {
         ...newBoard[index],
         value: 0,
-        probability: blockInfo.probability,
-        price: blockInfo.price,
+        probability: emptyBlock.probability,
+        price: emptyBlock.price,
       }
     });
+
+    const mergedBlock = findBlockInfo(GAME_BLOCKS, newValue);
+    newBlock = {
+      ...newBlock,
+      value: newValue,
+      probability: mergedBlock.probability,
+      price: mergedBlock.price,
+    };
   }
 
-  const blockInfo = findBlockInfo(GAME_BLOCKS, newValue);
-  newBoard[findBlockIndex(board, x, y)] = {
-    ...block,
-    value: newValue,
-    probability: blockInfo.probability,
-    price: blockInfo.price,
-  };
+  newBoard[findBlockIndex(board, x, y)] = {...newBlock};
 
   return {
-    board: newBoard, 
+    board: newBoard,
+    block: newBlock,
     isChanged: isChanged, 
-    value: newValue,
     score: newScore,
   };
 }
