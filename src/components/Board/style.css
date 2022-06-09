@@ -7,18 +7,17 @@
   transform-style: preserve-3d;
   display: grid;   
   align-self: flex-start;
-  margin-top: 2rem;
-  background: #c6e4ee;
+  margin-top: 4rem;
+  background: #f6f6f6;
 }
 
 .game-board div {
   background: #f6f6f6;
-  transform-origin: 100% 100%;
   position: relative;
   box-shadow: .125em .125em .5em rgba(0,0,0,.09);
 }
 
-.inner-effect:hover {
-  box-shadow: inset 0em 0em .2em .2em #c6e4ee;
+.cell-inner-effect:hover {
+  box-shadow: inset 0em 0em .2em .2em var(--color-light);
   cursor: pointer;
 }

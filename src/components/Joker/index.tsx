@@ -16,10 +16,9 @@ export const Joker: React.FC = () => {
         [dispatch]
       );
 
-
     return (
         <div className="joker" onClick={onJokerStore}>
-            <h2>Joker</h2>
+            <img src="/images/joker.svg" height="70px" alt="Joker Bonus" />
             { money }
         </div>
     );

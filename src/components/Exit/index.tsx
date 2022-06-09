@@ -16,7 +16,6 @@ export const Exit: React.FC = () => {
         [dispatch]
       );
   
-
     return (
         <div className="exit">
             <ButtonWithSound soundType="click" label=" X " onClick={onExitFromGame} />
