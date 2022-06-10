@@ -7,3 +7,7 @@
     position: relative;
     overflow-x: scroll;
 }
+
+.board-container_not-active {
+    visibility: hidden;
+}

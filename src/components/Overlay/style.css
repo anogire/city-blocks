@@ -1,6 +1,10 @@
 .overlay {
   width: 100%;
-  height: 100%;
+  height: var(--height-game);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,15 +12,10 @@
   text-align: center;
 }
 
-.joker-price {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background-color: rgb(203, 223, 230);
-  margin: 1px;
+.game-over-container {
+  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -27,7 +26,7 @@
   grid-template-rows: repeat(2, minmax(auto, 1fr));
   grid-row-gap: 2rem;
   grid-column-gap: 5rem;
-  margin: 0 auto;
+  margin: 30px auto 0 auto;
 }
 
 .joker-cell{
@@ -35,13 +34,105 @@
   box-shadow: .25rem .25rem 1rem rgba(0,0,0,.2);
   transform: rotateX(45deg) rotateZ(-35deg);
   transform-style: preserve-3d; 
+  background: var(--color-light);
 }
 
-.effect:hover {
-  box-shadow: 0em 0em .2em .2em #c6e4ee;
+.joker-cell_not-active div{
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.joker-cell__price {
+  background: transparent !important;
+  position: absolute;
+  bottom: -40px;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transform: 
+    translateY(2rem) translateZ(4rem)
+    rotateX(-45deg) rotateY(-20deg) rotateZ(25deg);
+}
+
+.joker-cell__price_not-active {
+  opacity: .5;
+}
+
+.joker-cell_effect:hover {
+  box-shadow: 0em 0em .2em .2em var(--color-light);
   cursor: pointer;
 }
 
-.not-active div{
-  background: rgba(255, 255, 255, 0.5);
+.with-animation-firework{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  aspect-ratio: 1 / 1;
+  background: 
+    radial-gradient(circle, #ffa500 .5vmin, #0000 0) 50% 0%,
+    radial-gradient(circle, #fdb530 .5vmin, #0000 0) 50% 100%,
+    radial-gradient(circle, #ffd700 .5vmin, #0000 0) 0% 100%,
+    radial-gradient(circle, #ffd6dd .5vmin, #0000 0) 100% 0%,
+    radial-gradient(circle, #faf60c .5vmin, #0000 0) 0% 900%,
+    radial-gradient(circle, #ffff73 .5vmin, #0000 0) 0% 50%,
+    radial-gradient(circle, #ffa500 .5vmin, #0000 0) 10% 70%,
+    radial-gradient(circle, #fdb530 .5vmin, #0000 0) 70% 10%,
+    radial-gradient(circle, #ffd700 .5vmin, #0000 0) 20% 80%,
+    radial-gradient(circle, #ffd6dd .5vmin, #0000 0) 80% 20%,
+    radial-gradient(circle, #faf60c .5vmin, #0000 0) 30% 100%,
+    radial-gradient(circle, #ffff73 .5vmin, #0000 0) 100% 30%,
+    radial-gradient(circle, #ffa500 .5vmin, #0000 0) 50% 0%,
+    radial-gradient(circle, #ffd700 .5vmin, #0000 0) 45% 20%,
+    radial-gradient(circle, #ffd6dd .5vmin, #0000 0) 15% 80%,
+    radial-gradient(circle, #faf60c .5vmin, #0000 0) 75% 30%,
+    radial-gradient(circle, #ffff73 .5vmin, #0000 0) 25% 60%,
+    radial-gradient(circle, #faf60c .5vmin, #0000 0) 0% 70%,
+    radial-gradient(circle, #ffff73 .5vmin, #0000 0) 0% 30%,
+    radial-gradient(circle, #ffa500 .5vmin, #0000 0) 10% 100%,
+    radial-gradient(circle, #fdb530 .5vmin, #0000 0) 70% 30%,
+    radial-gradient(circle, #ffd700 .5vmin, #0000 0) 20% 60%,
+    radial-gradient(circle, #ffd6dd .5vmin, #0000 0) 80% 5%,
+    radial-gradient(circle, #faf60c .5vmin, #0000 0) 15% 100%,
+    radial-gradient(circle, #ffff73 .5vmin, #0000 0) 100% 15%,
+    radial-gradient(circle, #ffa500 .5vmin, #0000 0) 30% 0%
+  ;
+  background-size: .5vmin .5vmin;
+  background-repeat: no-repeat;
+  animation: firework 2s infinite;
+  -webkit-animation: firework 2s infinite;
+}
+
+@keyframes firework {
+  0% { 
+    transform: translate(-50%, 20vh) rotate(-120deg);
+    width: .5vmin;
+    opacity: 0;
+  }
+  50% { 
+    width: .5vmin;
+    opacity: 1;
+  }
+  100% { 
+    transform: translate(-50%, -10vh) rotate(-120deg);
+    width: 30vmin; 
+    opacity: 0; 
+  }
+}
+
+@-webkit-keyframes firework {
+  0% {
+    -webkit-transform: translate(-50%, 20vh) rotate(-120deg);
+    width: .5vmin;
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: translate(-50%, 10vh) rotate(-120deg);
+    width: .5vmin;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate(-50%, -10vh) rotate(-120deg);
+    width: 30vmin; 
+    opacity: 0; 
+  }
 }

@@ -16,4 +16,4 @@ export type GeneralBlock = {
 
 export type GeneralBlockInfo = Pick<GeneralBlock, "value" | "probability" | "price">;
 
-export type GameSounds = "click" | "game over" | "set block";
+export type GameSounds = "click" | "game over" | "set block" | "congratz";

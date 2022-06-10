@@ -1,7 +1,7 @@
 .next-blocks-container{
   width: 4rem;
   position: relative;
-  background: #c6e4ee;
+  background: var(--color-light);
   box-shadow: .25rem .25rem 1rem rgba(0,0,0,.2);
   transform: rotateX(45deg) rotateZ(-35deg) translateZ(-10rem);
   transform-style: preserve-3d;
@@ -14,8 +14,14 @@
   transform-origin: 100% 100%;
   position: relative;
   box-shadow: .125em .125em .5em rgba(0,0,0,.09);
+  animation-delay: .2s !important;
+}
+
+.next-blocks-container div:first-child {
+  animation-delay: 0s !important;
 }
 
 .next-blocks-container div:last-child {
-  background: #c6e4ee !important;
+  background: var(--color-light) !important;
+  animation-delay: .4s !important;
 }

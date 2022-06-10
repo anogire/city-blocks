@@ -1,4 +1,5 @@
 export { SoundContainer } from './SoundContainer';
-export { SoundContext } from './SoundContext';
+export { SoundContext, SoundProvider } from './SoundContext';
 export { ElementWithSound } from './ElementWithSound';
 export { ButtonWithSound } from './ButtonWithSound';
+export { SideEffectWithSound } from './SideEffectWithSound';

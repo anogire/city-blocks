@@ -39,15 +39,14 @@ export const Board: React.FC = () => {
             }}
         >
             {
-                board.map(block => 
-                !!block.value
-                ?  <Block key={`${block.x}${block.y}`} block={block} />
+                board.map(block => !!block.value
+                ?  <Block key={`${block.x}${block.y}`} block={block} isAnimation={true} />                
                 :  <ElementWithSound
                         key={`${block.x}${block.y}`}
                         soundType="set block"
                         onClick={onSetNewBlock} 
                         dataBlock={JSON.stringify({x: block.x, y: block.y})}
-                        classNames="inner-effect"
+                        classNames="cell-inner-effect"
                     />
                 )
             }

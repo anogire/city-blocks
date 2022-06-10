@@ -1,8 +1,4 @@
-h2 {
-    margin: 0;
-}
-
-.score {
+.score-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,4 +6,85 @@ h2 {
     flex-direction: column;
     align-items: center;
     margin: 1.2rem 0 0 1.2rem;
+}
+
+.score {
+    position: relative;
+    z-index: 1;
+}
+
+.score__back-img {
+    z-index: 1;
+}
+
+.score__slider {
+    align-self: flex-start !important;
+    height: .4rem;
+    width: 100%;
+    background-color: var(--color-extra);
+    position: absolute;
+    bottom: 4px;
+    z-index: -1;
+}
+
+.best-score {
+    align-self: flex-start;
+}
+
+.with-bonus-animation {
+    position: absolute;
+    height: 80%;
+    left: 50%;
+    top: 50%;
+    filter: 
+        drop-shadow(-.5px -.5px .5px #e6f1ff) 
+        drop-shadow(.5px -.5px .5px #e6f1ff) 
+        drop-shadow(.5px .5px .5px #e6f1ff)
+        drop-shadow(-.5px .5px .5px #e6f1ff)
+        drop-shadow(-2px -2px 2px var(--color-light)) 
+        drop-shadow(2px -2px 2px var(--color-light)) 
+        drop-shadow(2px 2px 2px var(--color-light))
+        drop-shadow(-2px 2px 2px var(--color-light));
+    -webkit-filter: 
+        drop-shadow(-.5px -.5px .5px #e6f1ff) 
+        drop-shadow(.5px -.5px .5px #e6f1ff) 
+        drop-shadow(.5px .5px .5px #e6f1ff)
+        drop-shadow(-.5px .5px .5px #e6f1ff)
+        drop-shadow(-2px -2px 2px var(--color-light)) 
+        drop-shadow(2px -2px 2px var(--color-light)) 
+        drop-shadow(2px 2px 2px var(--color-light))
+        drop-shadow(-2px 2px 2px var(--color-light));       
+    transform: translate(-50%, -50%);
+    animation: get-joker 2s forwards;
+    -webkit-animation: get-joker 2s forwards;
+}
+
+@keyframes get-joker {
+    0%, 10% {
+        left: 50%;
+        top: 50%;
+        height: 80%;
+        opacity: 1;
+    }
+    100% {
+        left: 10%;
+        top: 85%;
+        height: 15%;
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes get-joker {
+    0%, 10% {
+        left: 50%;
+        top: 50%;
+        height: 80%;
+        opacity: 1;
+    }
+    100% {
+        left: 10%;
+        top: 85%;
+        height: 15%;
+        opacity: 0;
+    }
 }

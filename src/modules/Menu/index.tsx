@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createChangeStatusAction, createInitialGameAction, selectBoard, selectSize } from '../../store';
 import { SIZE_VARIANT } from '../../consts';
 import { SizeBoard } from '../../types';
+import { setStorageSound } from '../../store/helpers';
 import { ButtonWithSound, SoundContext } from '../../components/Sound';
 
 import './style.css';
@@ -38,43 +39,53 @@ export const Menu: React.FC = () => {
     }, []);
 
     const onToggleSound = React.useCallback(
-        (event: React.MouseEvent<HTMLButtonElement>) => sound?.toggleSound(),
+        (event: React.MouseEvent<HTMLButtonElement>) => {
+            sound?.toggleSound();
+            setStorageSound(!sound?.isSound);
+        },
         [sound]
     );
 
     return (
-        <div className="menu">
-            <ButtonWithSound
-                soundType="click"
-                label={sound?.isSound ? "Sound On" : "Sound Off"}
-                onClick={onToggleSound}
-            />
-            <div>
-                <select
-                    name="sizeBoard"
-                    value={sizeBoard}
-                    onChange={onSizeChange}
-                    aria-label="choose size of board"
-                    className="menu__size-board"
-                >
-                {SIZE_VARIANT.map((size, i) => (
-                    <option key={i} value={size}>
-                    {size}
-                    </option>
-                ))}
-                </select>
+        <div className="menu-container">
+            <div className="logo-container">
+                <img src="./images/logo.png" width="50%" alt="City blocks" />
+                <h1>City blocks</h1>
+            </div>
+            <div className="menu">
                 <ButtonWithSound
                     soundType="click"
-                    label="New Game"
-                    onClick={onStartNewGame}
+                    label={sound?.isSound ? "Sound On" : "Sound Off"}
+                    onClick={onToggleSound}
+                />
+                <div className="size-board-block">
+                    <select
+                        name="sizeBoard"
+                        value={sizeBoard}
+                        onChange={onSizeChange}
+                        aria-label="choose size of board"
+                        className="size-board-block__select"
+                    >
+                        {SIZE_VARIANT.map(size => (
+                            <option key={size.toString()} value={size}>
+                            {size}
+                            </option>
+                        ))}
+                    </select>
+                    <ButtonWithSound
+                        soundType="click"
+                        label="New Game"
+                        onClick={onStartNewGame}
+                    />
+                </div>
+                <ButtonWithSound
+                    soundType="click"
+                    label="Continue"
+                    isDisabled={isNewGame}
+                    classNames={isNewGame ? "button_disabled" : ""}
+                    onClick={onContinueGame}
                 />
             </div>
-            <ButtonWithSound
-                soundType="click"
-                label="Continue"
-                isDisabled={isNewGame}
-                onClick={onContinueGame}
-            />
         </div>
     );
 }
