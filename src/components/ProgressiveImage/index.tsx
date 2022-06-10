@@ -12,7 +12,7 @@ export const ProgressiveImage: React.FC<ImageProps> = ({placeholderSrc, src, cla
     const [imageSrc, setImageSrc] = React.useState(placeholderSrc);
     const [isLoading, setIsLoading] = React.useState(true);
 
-    React.useEffect(() => {
+    React.useMemo(() => {
         const img = new Image();
         img.src = src;
         img.onload = () => setImageSrc(src);
