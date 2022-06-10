@@ -2,7 +2,7 @@ import { GameState } from "../common";
 import { InitialGameAction } from "../actions";
 import { COUNT_NEW_RANDOM_BLOCKS, GAME_BLOCKS, MAX_START_NOT_EMPTY_BLOCKS } from "../../consts";
 import { Board, SizeBoard } from "../../types";
-import { getNewBoard, getNextBlocks } from "../helpers";
+import { getNewBoard, getNextBlocks, setStorageGame } from "../helpers";
 import { initialState } from "../reducer";
 
 export const reduceInitialGameAction = (state: GameState, action: InitialGameAction): GameState => {
@@ -21,6 +21,8 @@ export const reduceInitialGameAction = (state: GameState, action: InitialGameAct
     money: initialState.money,
     nextMilestone: { ...initialState.nextMilestone },
   };
+
+  setStorageGame(newStateForGame);
   
   return newStateForGame;
 }
