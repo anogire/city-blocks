@@ -66,8 +66,8 @@ export const Menu: React.FC = () => {
                         aria-label="choose size of board"
                         className="size-board-block__select"
                     >
-                        {SIZE_VARIANT.map((size, i) => (
-                            <option key={i} value={size}>
+                        {SIZE_VARIANT.map(size => (
+                            <option key={size.toString()} value={size}>
                             {size}
                             </option>
                         ))}
