@@ -11,6 +11,7 @@ import { JokerStore, GameOver, Portal } from "../../components/Overlay";
 import { SoundContainer, SoundProvider } from "../../components/Sound";
 
 import './style.css';
+import { ProgressiveImage } from "../../components/ProgressiveImage";
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -28,24 +29,31 @@ export const App: React.FC = () => {
 
   return (
     <div className="main">
-        <div id="overlay" className="game">
-          <SoundProvider>
-            <Portal>
-              <GameOver isVisible={status === "game over"} />
-              <JokerStore isVisible={status === "store"} />
-            </Portal>
-              {(status === "not active") && <Menu />}
-              {(status !== "not active") && <Game />}
-              {(status === "playing")
-              && <>
-                <Score />
-                <Joker />
-                <Exit />
-              </>
-              }           
-            <SoundContainer />
-          </SoundProvider>
-        </div>    
+      <ProgressiveImage
+        src="./images/back.jpeg"
+        placeholderSrc="./images/back_ph.jpeg"
+        className="back-image"
+        width="100%"
+        height="100%"
+      />
+      <div id="overlay" className="game">
+        <SoundProvider>
+          <Portal>
+            <GameOver isVisible={status === "game over"} />
+            <JokerStore isVisible={status === "store"} />
+          </Portal>
+            {(status === "not active") && <Menu />}
+            {(status !== "not active") && <Game />}
+            {(status === "playing")
+            && <>
+              <Score />
+              <Joker />
+              <Exit />
+            </>
+            }           
+          <SoundContainer />
+        </SoundProvider>
+      </div>   
     </div>
   );
 }

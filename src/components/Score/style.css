@@ -41,19 +41,19 @@
         drop-shadow(.5px -.5px .5px #e6f1ff) 
         drop-shadow(.5px .5px .5px #e6f1ff)
         drop-shadow(-.5px .5px .5px #e6f1ff)
-        drop-shadow(-2px -2px 2px var(--color-light)) 
-        drop-shadow(2px -2px 2px var(--color-light)) 
-        drop-shadow(2px 2px 2px var(--color-light))
-        drop-shadow(-2px 2px 2px var(--color-light));
+        drop-shadow(-1px -1px 1px var(--color-light)) 
+        drop-shadow(1px -1px 1px var(--color-light)) 
+        drop-shadow(1px 1px 1px var(--color-light))
+        drop-shadow(-1px 1px 1px var(--color-light));
     -webkit-filter: 
         drop-shadow(-.5px -.5px .5px #e6f1ff) 
         drop-shadow(.5px -.5px .5px #e6f1ff) 
         drop-shadow(.5px .5px .5px #e6f1ff)
         drop-shadow(-.5px .5px .5px #e6f1ff)
-        drop-shadow(-2px -2px 2px var(--color-light)) 
-        drop-shadow(2px -2px 2px var(--color-light)) 
-        drop-shadow(2px 2px 2px var(--color-light))
-        drop-shadow(-2px 2px 2px var(--color-light));       
+        drop-shadow(-1px -1px 1px var(--color-light)) 
+        drop-shadow(1px -1px 1px var(--color-light)) 
+        drop-shadow(1px 1px 1px var(--color-light))
+        drop-shadow(-1px 1px 1px var(--color-light));       
     transform: translate(-50%, -50%);
     animation: get-joker 2s forwards;
     -webkit-animation: get-joker 2s forwards;
