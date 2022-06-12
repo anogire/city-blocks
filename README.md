@@ -1,6 +1,14 @@
 # City Blocks
 
-City Blocks is a high score puzzle game. Build a large city, having as much population as possible.\
+[City Blocks](https://city-blocks.surge.sh/) is a high score puzzle game.\
+Build a large city, having as much population as possible.
+ 
+
+Good luck and have fun building your own city!
+
+
+## Start game
+
 Each game starts with a few random buildings.
 
 ![il-start-game](https://user-images.githubusercontent.com/70234990/173236359-9530d722-1ad8-45dc-bb31-f4e10a9bd79e.jpeg)
@@ -37,5 +45,8 @@ Your highest score will be saved and shown in the upper left corner of the game.
 
 https://user-images.githubusercontent.com/70234990/173238092-e7bbd14a-7996-4ae2-8836-95e115b756ae.mov
 
-# Good luck and have fun building your own city!
+### Settings
+- `size board` - 3, 4, 5, 6 squares.
+- `sound` - on / off.
+- `save game` - you can come back at any time and continue building.
 
