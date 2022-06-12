@@ -3,56 +3,39 @@
 City Blocks is a high score puzzle game. Build a large city, having as much population as possible.\
 Each game starts with a few random buildings.
 
-!["Start the game"](./public/images/readme/il-start-game.jpg?raw=true)
+![il-start-game](https://user-images.githubusercontent.com/70234990/173236359-9530d722-1ad8-45dc-bb31-f4e10a9bd79e.jpeg)
+
+
+## Add building
 
 To add a new building select an empty field.\
 You can see the next type of building in the bottom left corner.
 
-!["Set new building"](./public/images/readme/il-set-block.mov)
+https://user-images.githubusercontent.com/70234990/173234257-83ede7a6-c831-49cc-a2dc-1e0fc6c25439.mov
 
-## Available Scripts
 
-In the project directory, you can run:
+## Upgrade buildings
 
-### `npm start`
+Place three or more buildings of the same type next yo each other, to upgrade them.\
+Upgraded buildings will provide more population for your city.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+https://user-images.githubusercontent.com/70234990/173237196-14a6b684-3d31-4a41-bf47-53ea272a0208.mov
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Bonus
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You will get jokers from time to time.\
+Use them to replace the next building with a building of your choice.
 
-### `npm run build`
+![il-get-bonus](https://user-images.githubusercontent.com/70234990/173237749-9cde5072-7f0b-42bc-8179-d5fe0c096312.jpeg)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Game over
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Is there is no space left to place any buildings, the game is over.\
+Your highest score will be saved and shown in the upper left corner of the game.
 
-### `npm run eject`
+https://user-images.githubusercontent.com/70234990/173238092-e7bbd14a-7996-4ae2-8836-95e115b756ae.mov
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Good luck and have fun building your own city!
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-## Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
