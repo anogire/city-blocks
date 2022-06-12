@@ -35,7 +35,7 @@ export const Score: React.FC = () => {
                 <div className="score__slider" style={{width: `${score <= 100 ? score : score * 100 / min - 100}%`}}></div>
             </div>
             <p>{score}</p>
-            {!!bestScore && <p className="best-score">Your best score: {bestScore}</p>}
+            {!!bestScore && <p className="best-score">Your best result: {bestScore}</p>}
         </div>
 
         {isGetBonus
