@@ -1,8 +1,14 @@
-# Getting Started with Create React App
+# City Blocks
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+City Blocks is a high score puzzle game. Build a large city, having as much population as possible.\
+Each game starts with a few random buildings.
 
-!["Start the game"](./images/readme/il-start-game.jpg?raw=true)
+!["Start the game"](./public/images/readme/il-start-game.jpg?raw=true)
+
+To add a new building select an empty field.\
+You can see the next type of building in the bottom left corner.
+
+!["Set new building"](./public/images/readme/il-set-block.mov)
 
 ## Available Scripts
 
@@ -46,3 +52,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Getting Started with Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
