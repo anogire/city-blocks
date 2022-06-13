@@ -87,7 +87,7 @@ export const Menu: React.FC = () => {
                     soundType="click"
                     label="Continue"
                     isDisabled={isNewGame}
-                    classNames={isNewGame ? "button_disabled" : ""}
+                    classes={isNewGame ? "button_disabled" : ""}
                     onClick={onContinueGame}
                 />
             </div>

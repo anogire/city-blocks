@@ -35,8 +35,8 @@ export const Board: React.FC = () => {
     );
 
     const mergingBlocks = getStorageMergedBlocks();
-    const neighbors = mergingBlocks.neighbors || [];
-    const resultBlock = mergingBlocks.resultBlock || []; 
+    const neighbors = mergingBlocks.neighbors ?? [];
+    const resultBlock = mergingBlocks.resultBlock ?? []; 
 
     return (
         <div
@@ -64,7 +64,7 @@ export const Board: React.FC = () => {
                                 soundType="set block"
                                 onClick={onSetNewBlock} 
                                 dataBlock={JSON.stringify({x: block.x, y: block.y})}
-                                classNames="cell-inner-effect cell-after-merging"
+                                classes="cell-inner-effect cell-after-merging"
                             />
                             <Block 
                                 block={block} 
@@ -79,7 +79,7 @@ export const Board: React.FC = () => {
                             soundType="set block"
                             onClick={onSetNewBlock} 
                             dataBlock={JSON.stringify({x: block.x, y: block.y})}
-                            classNames="cell-inner-effect"
+                            classes="cell-inner-effect"
                         />
                     )
             })

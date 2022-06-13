@@ -16,7 +16,7 @@ export const GameOver: React.FC<GameOverProps> = ({ isVisible }) => {
     const dispatch = useDispatch();
 
     if (isVisible) {
-        const storage = getStorageData() ?? {};
+        const storage = getStorageData();
         (!storage.bestScore || storage.bestScore < score) && setStorageScore(score);
 
         removeStorageItem("game");

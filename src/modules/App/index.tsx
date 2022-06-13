@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createContinueGameAction, selectStatus } from "../../store";
-import { getStorageData } from "../../store/helpers";
 import { Menu } from "../Menu";
 import { Game } from "../Game";
 import { Score } from "../../components/Score";
@@ -9,20 +8,15 @@ import { Joker } from "../../components/Joker";
 import { Exit } from "../../components/Exit";
 import { JokerStore, GameOver, Portal } from "../../components/Overlay";
 import { SoundContainer, SoundProvider } from "../../components/Sound";
+import { ProgressiveImage } from "../../components/ProgressiveImage";
 
 import './style.css';
-import { ProgressiveImage } from "../../components/ProgressiveImage";
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
   
   React.useEffect(() => {
-    const savedGame = getStorageData().game ?? {};
-    if (savedGame) {
-      const action = createContinueGameAction();
-      dispatch(action);
-    }
-
+    dispatch(createContinueGameAction());
   }, [dispatch]);
 
   const status = useSelector(selectStatus);
@@ -32,7 +26,7 @@ export const App: React.FC = () => {
       <ProgressiveImage
         src="./images/back.jpeg"
         placeholderSrc="./images/back_ph.jpeg"
-        className="back-image"
+        classes="back-image"
         width="100%"
         height="100%"
       />
