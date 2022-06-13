@@ -11,10 +11,7 @@ export const Game: React.FC = () => {
   const status = useSelector(selectStatus);
   
   return (
-    <div className={cn("board-container", {
-      "playing": status,
-      "board-container_not-active": !status,
-    })}>
+    <div className={cn("board-container", {"board-container_not-active": status !== "playing",})}>
       <NextBlocks />
       <Board />
     </div>

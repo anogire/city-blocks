@@ -1,6 +1,6 @@
 .game-board{
-  width: 24rem;
-  height: 24rem;
+  width: var(--side-board);
+  height: var(--side-board);
   position: relative;
   box-shadow: .25rem .25rem 1rem rgba(0,0,0,.2);
   transform: rotateX(45deg) rotateZ(-35deg);

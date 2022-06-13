@@ -136,30 +136,79 @@
   bottom: 50%;
   right: 50%;
   transform: 
-    translateX(50%) translateY(50%) translateZ(-2rem)
-    rotateX(5deg) rotateY(2deg) rotateZ(50deg)
+    translateX(50%) translateY(50%) translateZ(-1.9rem)
+    rotateX(0) rotateY(0) rotateZ(45deg)
     scale(0);
   opacity: .9;
   animation: createDust .5s;
   animation-delay: .5s;
+  -webkit-animation: createDust .5s .5s;
 }
 
 @keyframes createDust {
   0% {
     transform:
-      translateX(50%) translateY(50%) translateZ(-2rem)
-      rotateX(5deg) rotateY(2deg) rotateZ(50deg)
+      translateX(50%) translateY(50%) translateZ(-1.9rem)
+      rotateX(0) rotateY(0) rotateZ(45deg)
       scale(0);
     opacity: .9;
   }
-  50% {
-    opacity: 1;
-  }
-  100% {
+  50% { opacity: 1; }
+  80% {
     transform:
-      translateX(50%) translateY(50%) translateZ(-2rem)
-      rotateX(5deg) rotateY(2deg) rotateZ(50deg)
-      scale(2);
+      translateX(50%) translateY(50%) translateZ(-1.9rem)
+      rotateX(0) rotateY(0) rotateZ(45deg)
+      scale(1.8);
+  }
+  100% { opacity: 0; }
+}
+
+@-webkit-keyframes createDust {
+  0% {
+    -webkit-transform:
+      translateX(50%) translateY(50%) translateZ(-1.9rem)
+      rotateX(0) rotateY(0) rotateZ(45deg)
+      scale(0);
+    opacity: .9;
+  }
+  50% { opacity: 1; }
+  80% {
+    -webkit-transform:
+      translateX(50%) translateY(50%) translateZ(-1.9rem)
+      rotateX(0) rotateY(0) rotateZ(45deg)
+      scale(1.8);
     opacity: 0;
   }
+  100% { opacity: 0; }
+}
+
+.with-merging-animation {
+  position: absolute !important;
+  animation: mergingBlocks .5s ease-out forwards;
+  -webkit-animation: mergingBlocks .5s ease-out forwards;
+}
+
+@keyframes mergingBlocks {
+  0% { transform: translate3d(var(--fromX), var(--fromY), 2rem); }
+  100% { transform: translate3d(var(--toX), var(--toY), 2rem); }
+}
+
+@-webkit-keyframes mergingBlocks {
+  0% { -webkit-transform: translate3d(var(--fromX), var(--fromY), 2rem); }
+  100% { -webkit-transform: translate3d(var(--toX), var(--toY), 2rem); }
+}
+
+.merged-blocks-delete {
+  display: none;
+}
+
+.merged-block-hidden {
+  opacity: 0 !important;
+}
+
+.cell-after-merging {
+  position: relative !important;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
