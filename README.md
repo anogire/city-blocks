@@ -24,7 +24,7 @@ https://user-images.githubusercontent.com/70234990/173234257-83ede7a6-c831-49cc-
 
 ## Upgrade buildings
 
-Place three or more buildings of the same type next yo each other, to upgrade them.\
+Place three or more buildings of the same type next to each other, to upgrade them.\
 Upgraded buildings will provide more population for your city.
 
 https://user-images.githubusercontent.com/70234990/173237196-14a6b684-3d31-4a41-bf47-53ea272a0208.mov
@@ -40,7 +40,7 @@ Use them to replace the next building with a building of your choice.
 
 ## Game over
 
-Is there is no space left to place any buildings, the game is over.\
+If there is no space left to place any buildings, the game is over.\
 Your highest score will be saved and shown in the upper left corner of the game.
 
 https://user-images.githubusercontent.com/70234990/173238092-e7bbd14a-7996-4ae2-8836-95e115b756ae.mov
