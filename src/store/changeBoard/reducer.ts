@@ -1,6 +1,6 @@
 import { GameState } from "../common";
 import { CheckBoardAction } from "../actions";
-import { isGameOver, recalculateBoard, recalculateNextBlocks } from "../helpers";
+import { isGameOver, recalculateBoard, recalculateNextBlocks, setStorageGame } from "../helpers";
 import { initialState } from "../reducer";
 
 export const reduceCheckBoardAction = (state: GameState, action: CheckBoardAction): GameState => {
@@ -42,6 +42,8 @@ export const reduceCheckBoardAction = (state: GameState, action: CheckBoardActio
         isChanged: isNextMilestone,
       }
     };
+  
+  setStorageGame(newStateAfterCheck);
 
   return newStateAfterCheck;
 }

@@ -1,6 +1,9 @@
+import { GameState } from "../common";
+
 const STORAGE_ID = "city-blocks";
 
 interface StorageData {
+    game?: GameState,
     bestScore?: number,
     isSound?: boolean,
 }
@@ -27,12 +30,30 @@ export function setStorageSound(isSound: boolean = true): void {
     }
 }
 
+export function setStorageGame(state: GameState): void {
+    const storage = getStorageData();
+    try {
+        localStorage.setItem(STORAGE_ID, JSON.stringify({...storage, game: state}));
+    } catch(e) {
+        console.log(`There is an error when set Game item into "${STORAGE_ID}" LocalStorage`);
+    }
+}
+
+export function removeStorageItem(item: keyof StorageData): void {
+    try {
+        const storage = JSON.parse(localStorage.getItem(STORAGE_ID) || "");
+        delete storage[item];
+        localStorage.setItem(STORAGE_ID, JSON.stringify({...storage}));
+    } catch(e) {
+        console.log(`There is an error when remove ${item} item from "${STORAGE_ID}" LocalStorage`);
+    }
+}
+
 export function getStorageData(): StorageData {
     let storageData: StorageData = {};
     try {
         storageData = JSON.parse(localStorage.getItem(STORAGE_ID) || "");
     } catch(e) {
-        console.log(`Something is wrong when get item "${STORAGE_ID}" from LocalStorage`);
     }
     
     return storageData;

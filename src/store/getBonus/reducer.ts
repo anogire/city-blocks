@@ -1,5 +1,6 @@
 import { GameState } from "../common";
 import { GetBonusAction } from "../actions";
+import { setStorageGame } from "../helpers";
 
 export const reduceGetBonusAction = (state: GameState, action: GetBonusAction): GameState => {
   const newMoney = state.money + action.payload!;
@@ -14,6 +15,7 @@ export const reduceGetBonusAction = (state: GameState, action: GetBonusAction): 
         max: rangeNextMilestone,
       }
     };
+  setStorageGame(newState);
   
   return newState;
 }

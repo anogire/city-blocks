@@ -15,6 +15,11 @@ export const Menu: React.FC = () => {
     const [isNewGame, setIsNewGame] = React.useState<boolean>(!board.length);
     const [sizeBoard, setSizeBoard] = React.useState<SizeBoard>(size);
     const dispatch = useDispatch();
+
+    React.useEffect(() => {
+        setIsNewGame(!board.length);
+        setSizeBoard(size);
+    }, [board.length, size]);
   
     const onStartNewGame = React.useCallback(
       (event: React.MouseEvent<HTMLButtonElement>) => {

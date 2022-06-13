@@ -1,17 +1,24 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { selectStatus } from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { createContinueGameAction, selectStatus } from "../../store";
+import { getStorageData } from "../../store/helpers";
 import { Menu } from "../Menu";
 import { Game } from "../Game";
-import { JokerStore, GameOver, Portal } from "../../components/Overlay";
 import { Score } from "../../components/Score";
 import { Joker } from "../../components/Joker";
 import { Exit } from "../../components/Exit";
+import { JokerStore, GameOver, Portal } from "../../components/Overlay";
 import { SoundContainer, SoundProvider } from "../../components/Sound";
 
 import './style.css';
 
 export const App: React.FC = () => {
+  const dispatch = useDispatch();
+  
+  React.useEffect(() => {
+    dispatch(createContinueGameAction());
+  }, [dispatch]);
+
   const status = useSelector(selectStatus);
 
   return (

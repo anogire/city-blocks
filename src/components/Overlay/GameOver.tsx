@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createChangeStatusAction, selectScore } from "../../store";
 import { getStorageData, setStorageScore } from "../../store/helpers";
+import { removeStorageItem } from "../../store/helpers/preferences";
 import { ButtonWithSound, SideEffectWithSound } from "../Sound";
-
 
 import "./style.css";
 
@@ -16,8 +16,10 @@ export const GameOver: React.FC<GameOverProps> = ({ isVisible }) => {
     const dispatch = useDispatch();
 
     if (isVisible) {
-        const storage = getStorageData() ?? 0;
+        const storage = getStorageData();
         (!storage.bestScore || storage.bestScore < score) && setStorageScore(score);
+
+        removeStorageItem("game");
     }
 
     const onBackToTheGame = React.useCallback(
