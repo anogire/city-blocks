@@ -3,7 +3,6 @@ import { GeneralBlock, SizeBoard } from "../../types";
 import { removeMergedData } from "../../store/helpers";
 import { SIDE_BOARD } from "../../consts";
 import CSS from 'csstype';
-import cn from "classnames";
 
 import './style.css';
 
@@ -66,18 +65,15 @@ export const Block: React.FC<BlockProps> = (props) => {
             >
                 <span className="cube__marker">{block.value}</span>
                 <img src="./images/boom.svg" style={{ animationDelay: `1s` }}
-                    className="cube__boom-effect cube__boom-effect_active" alt="Boom" />
+                    className={"cube__boom-effect cube__boom-effect_active"} alt="Boom" />
             </div>
-        :   <div 
-                className={cn("cube", {"with-cube-animation": isAnimation,})}
+        :   <div
+                className={`cube ${isAnimation ? " with-cube-animation" : ""}`}
                 style={{ animationDelay: `${delay}s`}}
             >
                 <span className="cube__marker">{block.value}</span>
-                <img
-                    src="./images/boom.svg"
-                    className={cn("cube__boom-effect", {"cube__boom-effect_active": isAnimation,})}
-                    alt="Boom"
-                />
+                <img src="./images/boom.svg"
+                    className={`cube__boom-effect ${isAnimation ? " cube__boom-effect_active" : ""}`} alt="Boom" />
             </div>
     );
 }

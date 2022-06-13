@@ -6,6 +6,7 @@
 }
 
 .image-loading {
+    border: 1px solid black;
     opacity: .3;
     filter: blur(15px);
     -webkit-filter: blur(15px);

@@ -15,7 +15,7 @@ interface MergedBlocks {
 }
 
 export function setStorageScore(score: number = 0): void {
-    const storage = getStorageData();
+    const storage = getStorageData() ?? {};
     if (!storage.bestScore || storage.bestScore < score) {
         try {
             localStorage.setItem(STORAGE_ID, JSON.stringify({...storage, bestScore: score}));
@@ -26,7 +26,7 @@ export function setStorageScore(score: number = 0): void {
 }
 
 export function setStorageSound(isSound: boolean = true): void {
-    const storage = getStorageData();
+    const storage = getStorageData() ?? {};
     if (!storage.isSound || storage.isSound !== isSound) {
         try {
             localStorage.setItem(STORAGE_ID, JSON.stringify({...storage, isSound: isSound}));
@@ -37,7 +37,7 @@ export function setStorageSound(isSound: boolean = true): void {
 }
 
 export function setStorageGame(state: GameState): void {
-    const storage = getStorageData();
+    const storage = getStorageData() ?? {};
     try {
         localStorage.setItem(STORAGE_ID, JSON.stringify({...storage, game: state}));
     } catch(e) {
@@ -67,10 +67,10 @@ export function getStorageData(): StorageData {
 
 export function setStorageMergedBlocks(data: MergedBlocks): void {
     try {
-        const mergedBlocks = getStorageMergedBlocks().neighbors ?? [];
+        const mergedBlocks = getStorageMergedBlocks() || [];
         let neighbors = [data.neighbors!];
-        if (mergedBlocks) {
-            neighbors.push(mergedBlocks);
+        if (mergedBlocks.neighbors) {
+            neighbors.push(mergedBlocks.neighbors);
         }
         localStorage.setItem(STORAGE_ANIMATION_ID, JSON.stringify({
             resultBlock: data.resultBlock, 

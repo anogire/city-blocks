@@ -5,13 +5,17 @@ interface ButtonInterface {
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void,
     label?: string,
     isDisabled?: boolean,
-    classes?: string,
+    classNames?: string,
 }
 
-export const Button: React.FC<ButtonInterface> = ({ onClick, label, isDisabled, classes }) => {
+export const Button: React.FC<ButtonInterface> = ({ onClick, label, isDisabled, classNames }) => {
 
     return (
-        <button className={classes} disabled={isDisabled} onClick={onClick}>
+        <button
+            className={`${classNames ? ` ${classNames}` : ""}`}
+            disabled={isDisabled}
+            onClick={onClick}
+        >
             { label }
         </button>
     );

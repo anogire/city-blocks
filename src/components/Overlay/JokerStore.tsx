@@ -54,7 +54,7 @@ export const JokerStore: React.FC<JokerProps> = ({ isVisible }) => {
                 :   <ElementWithSound key={`${block.value}`}
                         soundType="click"
                         onClick={onBuyJokerBlock}
-                        classes="joker-cell joker-cell_effect"
+                        classNames="joker-cell joker-cell_effect"
                         dataBlock={JSON.stringify({...block, x: nextBlock.x, y: nextBlock.y})}
                     >
                         <Block block={{...block, x: nextBlock.x, y: nextBlock.y}} isAnimation={false} />
