@@ -2,8 +2,6 @@ import * as React from "react";
 import { withSound } from "./withSound";
 import CSS from 'csstype';
 
-const classNames = require('classnames');
-
 interface ElementInterface {
     onClick: (event: React.MouseEvent<HTMLElement>) => void,
     classes?: string,
@@ -13,10 +11,9 @@ interface ElementInterface {
 }
 
 export const Element: React.FC<ElementInterface> = ({ onClick, classes, inlineStyle, dataBlock, children }) => {
-    const elementClasses = classNames(classes);
 
     return (
-        <div className={elementClasses} style={inlineStyle} data-block={dataBlock} onClick = {onClick}>
+        <div className={classes} style={inlineStyle} data-block={dataBlock} onClick = {onClick}>
             { children }
         </div>
     );

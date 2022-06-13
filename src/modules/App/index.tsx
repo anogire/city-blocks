@@ -8,9 +8,9 @@ import { Joker } from "../../components/Joker";
 import { Exit } from "../../components/Exit";
 import { JokerStore, GameOver, Portal } from "../../components/Overlay";
 import { SoundContainer, SoundProvider } from "../../components/Sound";
+import { ProgressiveImage } from "../../components/ProgressiveImage";
 
 import './style.css';
-import { ProgressiveImage } from "../../components/ProgressiveImage";
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import * as React from "react";
-import './style.css';
+import cn from "classnames";
 
-const classNames = require('classnames');
+import './style.css';
 
 interface ImageProps {
     placeholderSrc: string,
@@ -13,7 +13,6 @@ interface ImageProps {
 export const ProgressiveImage: React.FC<ImageProps> = ({placeholderSrc, src, className, ...props}) => {
     const [imageSrc, setImageSrc] = React.useState(placeholderSrc);
     const [isLoading, setIsLoading] = React.useState(true);
-    const imageClasses = classNames(className, isLoading && "image-loading", !isLoading && "image-loaded");
 
     React.useMemo(() => {
         const img = new Image();
@@ -24,7 +23,15 @@ export const ProgressiveImage: React.FC<ImageProps> = ({placeholderSrc, src, cla
 
     return (
         <div className="image-wrap">
-            <img src={imageSrc} className={imageClasses} alt={props.alt || ""} {...props} />
+            <img
+                src={imageSrc}
+                className={cn(className, {
+                    "image-loading": isLoading,
+                    "image-loaded": !isLoading,
+                })}
+                alt={props.alt || ""}
+                {...props}
+            />
         </div>
     );
 }
