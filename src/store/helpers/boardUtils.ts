@@ -1,6 +1,5 @@
 import { GAME_BLOCKS } from "../../consts";
 import { BlockProbability, BlockValue, Board, GeneralBlock, GeneralBlockInfo, SizeBoard } from "../../types";
-import { setStorageMergedBlocks } from "./preferences";
 import { getNextBlock } from "./randomGenerator";
 
 const findBlock = (board: Board, x: number, y: number) => {
@@ -118,8 +117,6 @@ export const recalculateBoard = (board: Board, block: GeneralBlock):
     newScore = neighbors.length * newValue;
     newValue = newValue * 2 as BlockValue;
     const emptyBlock = findBlockInfo(GAME_BLOCKS, 0);
-
-    setStorageMergedBlocks({resultBlock: [newBlock.x, newBlock.y], neighbors: neighbors});
 
     neighbors.map(neighbor => {
       const index = findBlockIndex(board, neighbor[0], neighbor[1]);

@@ -26,7 +26,7 @@ export const App: React.FC = () => {
       <ProgressiveImage
         src="./images/back.jpeg"
         placeholderSrc="./images/back_ph.jpeg"
-        classes="back-image"
+        className="back-image"
         width="100%"
         height="100%"
       />
