@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createContinueGameAction, selectStatus } from "../../store";
-import { getStorageData } from "../../store/helpers";
 import { Menu } from "../Menu";
 import { Game } from "../Game";
 import { Score } from "../../components/Score";
@@ -17,12 +16,7 @@ export const App: React.FC = () => {
   const dispatch = useDispatch();
   
   React.useEffect(() => {
-    const savedGame = getStorageData().game ?? {};
-    if (savedGame) {
-      const action = createContinueGameAction();
-      dispatch(action);
-    }
-
+    dispatch(createContinueGameAction());
   }, [dispatch]);
 
   const status = useSelector(selectStatus);

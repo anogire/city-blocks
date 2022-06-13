@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { createGetBonusAction, selectNextMilestone, selectScore} from "../../store";
 import { getStorageData } from "../../store/helpers";
 import { SideEffectWithSound } from "../Sound";
-
 import './style.css';
+
+const classNames = require('classnames');
 
 export const Score: React.FC = () => {
     const score = useSelector(selectScore);
@@ -12,6 +13,8 @@ export const Score: React.FC = () => {
     const [isGetBonus, setIsGetBonus] = React.useState(false);
     const bestScore = getStorageData().bestScore ?? 0;
     const dispatch = useDispatch();
+
+    const jokerClasses = classNames(isGetBonus && "with-bonus-animation");
 
     React.useEffect(() => {
         if (isChanged) {
@@ -40,8 +43,7 @@ export const Score: React.FC = () => {
 
         {isGetBonus
         && <SideEffectWithSound >
-                <img src="/images/joker.svg" alt="Joker Bonus" 
-                    className={`${isGetBonus ? "with-bonus-animation" : ""}`} />
+                <img src="/images/joker.svg" className={jokerClasses} alt="Joker Bonus"/>
             </SideEffectWithSound>
         }
         </>

@@ -3,8 +3,9 @@ import { GeneralBlock, SizeBoard } from "../../types";
 import { removeMergedData } from "../../store/helpers";
 import { SIDE_BOARD } from "../../consts";
 import CSS from 'csstype';
-
 import './style.css';
+
+const classNames = require('classnames');
 
 interface BlockProps {
     block: GeneralBlock;
@@ -27,6 +28,8 @@ export const Block: React.FC<BlockProps> = (props) => {
         coordsResultBlock
     } = props;
     const delay = block.x < 3 ? block.x / 10 : .2;
+    const blockClasses = classNames("cube", isAnimation && "with-cube-animation");
+    const effectClasses = classNames("cube__boom-effect", isAnimation && "cube__boom-effect_active");
 
     const [mergingClasses, setMergingClasses] = React.useState("cube with-merging-animation");
     const [resultBlockClasses, setResultBlockClasses] = React.useState("cube with-cube-animation merged-block-hidden");
@@ -65,15 +68,11 @@ export const Block: React.FC<BlockProps> = (props) => {
             >
                 <span className="cube__marker">{block.value}</span>
                 <img src="./images/boom.svg" style={{ animationDelay: `1s` }}
-                    className={"cube__boom-effect cube__boom-effect_active"} alt="Boom" />
+                    className="cube__boom-effect cube__boom-effect_active" alt="Boom" />
             </div>
-        :   <div
-                className={`cube ${isAnimation ? " with-cube-animation" : ""}`}
-                style={{ animationDelay: `${delay}s`}}
-            >
+        :   <div className={blockClasses} style={{ animationDelay: `${delay}s`}}>
                 <span className="cube__marker">{block.value}</span>
-                <img src="./images/boom.svg"
-                    className={`cube__boom-effect ${isAnimation ? " cube__boom-effect_active" : ""}`} alt="Boom" />
+                <img src="./images/boom.svg" className={effectClasses} alt="Boom" />
             </div>
     );
 }
