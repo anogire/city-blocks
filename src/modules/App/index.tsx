@@ -16,12 +16,7 @@ export const App: React.FC = () => {
   const dispatch = useDispatch();
   
   React.useEffect(() => {
-    const savedGame = getStorageData().game ?? {};
-    if (savedGame) {
-      const action = createContinueGameAction();
-      dispatch(action);
-    }
-
+    dispatch(createContinueGameAction());
   }, [dispatch]);
 
   const status = useSelector(selectStatus);
