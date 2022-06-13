@@ -8,9 +8,9 @@ import { Joker } from "../../components/Joker";
 import { Exit } from "../../components/Exit";
 import { JokerStore, GameOver, Portal } from "../../components/Overlay";
 import { SoundContainer, SoundProvider } from "../../components/Sound";
+import { ProgressiveImage } from "../../components/ProgressiveImage";
 
 import './style.css';
-import { ProgressiveImage } from "../../components/ProgressiveImage";
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ export const App: React.FC = () => {
       <ProgressiveImage
         src="./images/back.jpeg"
         placeholderSrc="./images/back_ph.jpeg"
-        className="back-image"
+        classes="back-image"
         width="100%"
         height="100%"
       />

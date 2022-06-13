@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { createGetBonusAction, selectNextMilestone, selectScore} from "../../store";
 import { getStorageData } from "../../store/helpers";
 import { SideEffectWithSound } from "../Sound";
-import './style.css';
+import cn from "classnames";
 
-const classNames = require('classnames');
+import './style.css';
 
 export const Score: React.FC = () => {
     const score = useSelector(selectScore);
@@ -13,8 +13,6 @@ export const Score: React.FC = () => {
     const [isGetBonus, setIsGetBonus] = React.useState(false);
     const bestScore = getStorageData().bestScore ?? 0;
     const dispatch = useDispatch();
-
-    const jokerClasses = classNames(isGetBonus && "with-bonus-animation");
 
     React.useEffect(() => {
         if (isChanged) {
@@ -34,8 +32,16 @@ export const Score: React.FC = () => {
         <>
         <div className="score-container">
             <div className="score">
-                <img src="/images/slider.svg" height="100px" alt="Joker Bonus" className="score__back-img" />
-                <div className="score__slider" style={{width: `${score <= 100 ? score : score * 100 / min - 100}%`}}></div>
+                <img
+                    src="/images/slider.svg"
+                    className="score__back-img"
+                    height="100px"
+                    alt="Joker Bonus"
+                />
+                <div
+                    className="score__slider"
+                    style={{width: `${score <= 100 ? score : score * 100 / min - 100}%`}}
+                />
             </div>
             <p>{score}</p>
             {!!bestScore && <p className="best-score">Your best result: {bestScore}</p>}
@@ -43,7 +49,11 @@ export const Score: React.FC = () => {
 
         {isGetBonus
         && <SideEffectWithSound >
-                <img src="/images/joker.svg" className={jokerClasses} alt="Joker Bonus"/>
+                <img
+                    src="/images/joker.svg"
+                    className={cn({"with-bonus-animation": isGetBonus})}
+                    alt="Joker Bonus"
+                />
             </SideEffectWithSound>
         }
         </>

@@ -6,6 +6,7 @@ import { getStorageMergedBlocks } from "../../store/helpers";
 import { GeneralBlock } from "../../types";
 import { Block } from "../Block";
 import { ElementWithSound } from "../Sound";
+
 import './style.css';
 
 export const Board: React.FC = () => {  
