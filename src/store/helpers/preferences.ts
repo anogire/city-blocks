@@ -9,7 +9,7 @@ interface StorageData {
 }
 
 export function setStorageScore(score: number = 0): void {
-    const storage = getStorageData() ?? {};
+    const storage = getStorageData();
     if (!storage.bestScore || storage.bestScore < score) {
         try {
             localStorage.setItem(STORAGE_ID, JSON.stringify({...storage, bestScore: score}));
@@ -20,7 +20,7 @@ export function setStorageScore(score: number = 0): void {
 }
 
 export function setStorageSound(isSound: boolean = true): void {
-    const storage = getStorageData() ?? {};
+    const storage = getStorageData();
     if (!storage.isSound || storage.isSound !== isSound) {
         try {
             localStorage.setItem(STORAGE_ID, JSON.stringify({...storage, isSound: isSound}));
@@ -31,7 +31,7 @@ export function setStorageSound(isSound: boolean = true): void {
 }
 
 export function setStorageGame(state: GameState): void {
-    const storage = getStorageData() ?? {};
+    const storage = getStorageData();
     try {
         localStorage.setItem(STORAGE_ID, JSON.stringify({...storage, game: state}));
     } catch(e) {
