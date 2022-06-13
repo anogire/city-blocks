@@ -1,21 +1,20 @@
 import * as React from "react";
 import { withSound } from "./withSound";
 
+const classNames = require('classnames');
+
 interface ButtonInterface {
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void,
     label?: string,
     isDisabled?: boolean,
-    classNames?: string,
+    classes?: string,
 }
 
-export const Button: React.FC<ButtonInterface> = ({ onClick, label, isDisabled, classNames }) => {
+export const Button: React.FC<ButtonInterface> = ({ onClick, label, isDisabled, classes }) => {
+    const btnClasses = classNames(classes);
 
     return (
-        <button
-            className={`${classNames ? ` ${classNames}` : ""}`}
-            disabled={isDisabled}
-            onClick={onClick}
-        >
+        <button className={btnClasses} disabled={isDisabled} onClick={onClick}>
             { label }
         </button>
     );
