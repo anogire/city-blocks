@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createGetBonusAction, selectNextMilestone, selectScore} from "../../store";
 import { getStorageData } from "../../store/helpers";
 import { SideEffectWithSound } from "../Sound";
+import cn from "classnames";
 
 import './style.css';
 
@@ -31,8 +32,16 @@ export const Score: React.FC = () => {
         <>
         <div className="score-container">
             <div className="score">
-                <img src="/images/slider.svg" height="100px" alt="Joker Bonus" className="score__back-img" />
-                <div className="score__slider" style={{width: `${score <= 100 ? score : score * 100 / min - 100}%`}}></div>
+                <img
+                    src="/images/slider.svg"
+                    className="score__back-img"
+                    height="100px"
+                    alt="Joker Bonus"
+                />
+                <div
+                    className="score__slider"
+                    style={{width: `${score <= 100 ? score : score * 100 / min - 100}%`}}
+                />
             </div>
             <p>{score}</p>
             {!!bestScore && <p className="best-score">Your best score: {bestScore}</p>}
@@ -40,8 +49,11 @@ export const Score: React.FC = () => {
 
         {isGetBonus
         && <SideEffectWithSound >
-                <img src="/images/joker.svg" alt="Joker Bonus" 
-                    className={`${isGetBonus ? "with-bonus-animation" : ""}`} />
+                <img
+                    src="/images/joker.svg"
+                    className={cn({"with-bonus-animation": isGetBonus})}
+                    alt="Joker Bonus"
+                />
             </SideEffectWithSound>
         }
         </>

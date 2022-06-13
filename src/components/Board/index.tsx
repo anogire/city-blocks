@@ -46,7 +46,7 @@ export const Board: React.FC = () => {
                         soundType="set block"
                         onClick={onSetNewBlock} 
                         dataBlock={JSON.stringify({x: block.x, y: block.y})}
-                        classNames="cell-inner-effect"
+                        classes="cell-inner-effect"
                     />
                 )
             }

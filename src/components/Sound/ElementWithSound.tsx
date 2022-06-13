@@ -4,21 +4,16 @@ import CSS from 'csstype';
 
 interface ElementInterface {
     onClick: (event: React.MouseEvent<HTMLElement>) => void,
-    classNames?: string,
+    classes?: string,
     inlineStyle?: CSS.Properties,
     dataBlock?: string,
     children?: React.ReactNode,
 }
 
-export const Element: React.FC<ElementInterface> = ({ onClick, classNames, inlineStyle, dataBlock, children }) => {
+export const Element: React.FC<ElementInterface> = ({ onClick, classes, inlineStyle, dataBlock, children }) => {
 
     return (
-        <div
-            className={`${classNames ? ` ${classNames}` : ""}`}
-            style={inlineStyle}
-            data-block={dataBlock}
-            onClick = {onClick}
-        >
+        <div className={classes} style={inlineStyle} data-block={dataBlock} onClick = {onClick}>
             { children }
         </div>
     );
